@@ -6,7 +6,7 @@ import rootReducer from './root.reducer';
 const initialState = {};
 
 export default createStore(
-    initialState,
     rootReducer,
+    initialState,
     applyMiddleware(thunk)
 );
