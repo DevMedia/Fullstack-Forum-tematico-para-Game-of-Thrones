@@ -1,5 +1,7 @@
 import * as types from './types';
-import { provideFetchAllPostsUrl, provideFetchPostsByAuthorUrl } from '../../helpers/urlProviders';
+import { 
+    provideFetchAllPostsUrl, provideFetchPostsByAuthorUrl, provideFetchDetails
+} from '../../helpers/urlProviders';
 
 export const postsFetchAll = () => async dispatch => {
     const url = provideFetchAllPostsUrl();
@@ -19,4 +21,15 @@ export const postsFetchByAuthor = authorId => async dispatch => {
         type: types.POSTS_FETCH_BY_AUTHOR,
         payload: response.status === 200 ? await response.json() : []
     });
+}
+
+export const postsFetchDetails = postId => async dispatch => {
+    const url = provideFetchDetails(postId);
+    const response = await fetch(url);
+
+    return dispatch({
+        type: types.POSTS_FETCH_DETAILS,
+        payload: response.status === 200 ? await response.json() : {}
+    })
+
 }

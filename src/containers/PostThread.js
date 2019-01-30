@@ -1,0 +1,41 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+import { postsFetchDetails } from '../reduxModules/posts/actions';
+import Post from '../components/post/Post';
+
+export class PostThread extends Component {
+    static propTypes = {
+        match: PropTypes.object,
+        postDetails: PropTypes.object
+    };
+
+    componentDidMount() {
+        const { postId } = this.props.match.params;
+        this.props.postsFetchDetails(postId);
+    }
+
+    render() {
+        return  (
+            <div>
+                {this.props.postDetails.id 
+                    ? <Post post={this.props.postDetails}/>
+                    : <h1>placeholder</h1>}
+            </div>
+        );
+    }
+}
+
+const mapStateToProps = state => ({
+    postDetails: state.posts.postDetails
+});
+
+const mapDispatchToProps = {
+    postsFetchDetails
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(PostThread);

@@ -15,3 +15,7 @@ export const provideSignUpUrl = () => {
 export const provideFetchPostsByAuthorUrl = authorId => {
     return baseUrl + `api/post?authorId=${authorId}`;
 }
+
+export const provideFetchDetails = postId => {
+    return baseUrl + `api/post/${postId}`;
+}

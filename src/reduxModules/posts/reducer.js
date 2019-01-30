@@ -1,7 +1,8 @@
 import * as types from './types';
 
 const initialSate = {
-    postList: []
+    postList: [],
+    postDetails: {}
 };
 
 export default (state = initialSate, { type, payload }) => {
@@ -11,6 +12,9 @@ export default (state = initialSate, { type, payload }) => {
 
         case types.POSTS_FETCH_BY_AUTHOR:
             return { ...state, postList: payload };
+
+        case types.POSTS_FETCH_DETAILS:
+            return { ...state, postDetails: payload }
 
         default:
             return state;

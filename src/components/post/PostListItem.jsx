@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const PostListItem = ({ post }) => (
-<div className="row d-flex w-100 justify-content-between">
-    <div className="col col-12 text-left">
-        <h5 className="text-muted">{ post.author.name }</h5>
-        <h4>{ post.title }</h4>
-        <h6 className="text-muted">{ post.createdAt }</h6>
+<Link to={'/post/' + post.id} className="list-group-item-action">
+    <div className="row d-flex w-100 justify-content-between">
+        <div className="col col-12 text-left">
+            <h5 className="text-muted">{ post.author.name }</h5>
+            <h4>{ post.title }</h4>
+            <h6 className="text-muted">{ post.createdAt }</h6>
+        </div>
     </div>
-</div>
+</Link>
 );
 
 PostListItem.propTypes = {
