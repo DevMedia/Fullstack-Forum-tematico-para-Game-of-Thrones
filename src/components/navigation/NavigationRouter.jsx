@@ -8,13 +8,11 @@ import Home from '../Home';
 
 const MainPage = ({ userIsLogged }) => (
 <div className="container">
-    <BrowserRouter>
-        <Switch>
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/" component={Home} />
-        </Switch>
-    </BrowserRouter>
+    <Switch>
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/" component={Home} />
+    </Switch>
 </div>
 );
 

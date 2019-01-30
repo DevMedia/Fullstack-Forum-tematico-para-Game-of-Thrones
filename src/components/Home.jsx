@@ -1,10 +1,10 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+
+import PostList from '../containers/PostList';
 
 const Home = () => (
 <div>
-    <h1>hello</h1>
-
+    <PostList />
 </div>
 );
 
