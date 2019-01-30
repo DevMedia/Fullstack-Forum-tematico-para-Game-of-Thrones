@@ -19,7 +19,7 @@ export class Login extends Component {
     }
 
     static propTypes = {
-        // prop: PropTypes,
+        
     };
 
     handleChange(name) {
@@ -49,7 +49,7 @@ export class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-    user: state.auth.user,
+    userIsLogged: state.auth.userIsLogged
 });
 
 const mapDispatchToProps = {
