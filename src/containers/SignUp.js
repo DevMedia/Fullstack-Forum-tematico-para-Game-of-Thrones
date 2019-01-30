@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import SignUpForm from '../components/SignUpForm';
+import SignUpForm from '../components/forms/SignUpForm';
 import { authSignUp } from '../reduxModules/auth/actions';
 
 export class SignUp extends Component {
@@ -20,7 +20,8 @@ export class SignUp extends Component {
     }
 
     static propTypes = {
-        prop: PropTypes,
+        authSignUp: PropTypes.func,
+        userIsLogged: PropTypes.bool
     };
 
     handleChange(name) {
