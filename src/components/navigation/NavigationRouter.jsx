@@ -6,6 +6,7 @@ import SignUp from '../../containers/SignUp';
 import Home from '../Home';
 import Comment from '../comments/Comment';
 import PostThread from '../../containers/PostThread';
+import PostPlaceholder from '../post/PostPlaceholder';
 
 const NavigationRouter = props => (
     <div className="container">
@@ -19,6 +20,7 @@ const NavigationRouter = props => (
                 render={props => <Comment {...props} comment={comente} />}
             />
             <Route path="/post/:postId" component={PostThread} />
+            <Route path="/poste" component={PostPlaceholder} />
         </Switch>
     </div>
 );
