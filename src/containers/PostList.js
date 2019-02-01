@@ -24,11 +24,11 @@ export class PostListHoC extends Component {
 
     render() {
         const { posts } = this.props;
-        if (posts.length === 0) {
-            return <PostsListPlaceholder />;
-        }
 
-        return <PostsList posts={posts} />
+        return posts.length === 0
+            ? <PostsListPlaceholder />
+            : <PostsList posts={posts} /> ;
+
     }
 }
 

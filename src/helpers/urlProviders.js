@@ -19,3 +19,7 @@ export const provideFetchPostsByAuthorUrl = authorId => {
 export const provideFetchDetails = postId => {
     return baseUrl + `api/post/${postId}`;
 }
+
+export const provideFetchCommentsByPost = postId => {
+    return baseUrl + `api/comment?postId=${postId}`;
+}

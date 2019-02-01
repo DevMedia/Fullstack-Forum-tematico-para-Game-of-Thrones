@@ -1,29 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import CommentsList from '../../containers/CommentsList';
+
 const Post = ({ post }) => {
 
     const date = new Date(post.createdAt);
-    console.log(date)
     const postDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
     return (
-        <div className="card">
-            <div className="card-header">
-                <h2>{post.title}</h2>
-            </div>
-            <div className="card-body">
-                <p>{post.body}</p>
-            </div>
-            <div className="card-footer">
-                <div className="row">
-                    <div className="text-left col col-6">
-                        <h5 className="text-muted">{post.author.name}</h5>
-                    </div>
-                    <div className="text-right col col-6">
-                        <h6 className="text-muted">{postDate}</h6>
+        <div>
+            <div className="card">
+                <div className="card-header">
+                    <h2>{post.title}</h2>
+                </div>
+                <div className="card-body">
+                    <p>{post.body}</p>
+                </div>
+                <div className="card-footer">
+                    <div className="row">
+                        <div className="text-left col col-6">
+                            <h5 className="text-muted">{post.author.name}</h5>
+                        </div>
+                        <div className="text-right col col-6">
+                            <h6 className="text-muted">{postDate}</h6>
+                        </div>
                     </div>
                 </div>
             </div>
+            <CommentsList postId={post.id} />
         </div>
     );
 };

@@ -6,6 +6,8 @@
     "holderjs": "^2.9.6",
     "js-cookie": "^2.2.0",
     "jwt-decode": "^2.2.0",
+    "node-sass": "^4.11.0",
+    "placeholder-loading": "^0.1.5",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",

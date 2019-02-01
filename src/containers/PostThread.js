@@ -17,13 +17,13 @@ export class PostThread extends Component {
     }
 
     render() {
-        return  (
-            <div>
-                {this.props.postDetails.id 
-                    ? <Post post={this.props.postDetails}/>
-                    : <h1>placeholder</h1>}
-            </div>
-        );
+        const { postDetails } = this.props;
+
+        return  postDetails.id 
+            ? <Post post={postDetails}/>
+            : <h1>maseim</h1>
+                    
+        
     }
 }
 
