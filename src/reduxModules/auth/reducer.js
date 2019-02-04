@@ -2,17 +2,25 @@ import * as types from './types';
 
 const initialState = {
     userData: {},
-    userIslogged: false,
+    userIsLogged: false,
 };
 
 export default (state = initialState, { type, payload }) => {
     switch (type) {
         case types.AUTH_LOGIN:
-            return { ...state, userData: payload };
+            return { ...state, ...payload };
 
         case types.AUTH_SIGNUP:
-            return { ...state, userIslogged: payload };
+            return { ...state, userIsLogged: payload };
 
+        case types.AUTH_LOGOFF:
+            return { ...state, ...payload};
+
+        case types.AUTH_RETRIEVE_USER_DATA:
+            return { ...state, userData: payload };
+
+        case types.AUTH_CHECK_USER_IS_LOGGED:
+            return { ...state, ...payload }    
         default:
             return state;
     }

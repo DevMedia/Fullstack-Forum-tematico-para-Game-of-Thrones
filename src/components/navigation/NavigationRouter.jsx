@@ -6,7 +6,10 @@ import SignUp from '../../containers/SignUp';
 import Home from '../Home';
 import Comment from '../comments/Comment';
 import PostThread from '../../containers/PostThread';
-import PostPlaceholder from '../post/PostPlaceholder';
+import PostForm from '../forms/PostForm';
+import CreatePost from '../../containers/CreatePost';
+import CreateComment from '../../containers/CreateComment';
+
 
 const NavigationRouter = props => (
     <div className="container">
@@ -14,28 +17,11 @@ const NavigationRouter = props => (
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/" component={Home} />
-            <Route
-                exact
-                path="/comente"
-                render={props => <Comment {...props} comment={comente} />}
-            />
-            <Route path="/post/:postId" component={PostThread} />
-            <Route path="/poste" component={PostPlaceholder} />
+            <Route exact path="/post/:postId" component={PostThread} />
+            <Route exact path="/create/post" component={CreatePost} />
         </Switch>
     </div>
 );
-
-const comente = {
-    id: '75efb7ec-3a05-46cf-9b68-08a6ec978714',
-    body: 'ESSE POSTE É UMA BELEZA',
-    createdAt: '2019-01-29T16:22:11.000Z',
-    updatedAt: '2019-01-29T16:22:11.000Z',
-    authorId: '9a76158f-6332-4e0c-a4d5-8d79767a9215',
-    postId: 'c6c98173-c105-46c6-92f5-4ba00ddebd62',
-    author: {
-        name: 'Aylan Boscarino',
-    },
-};
 
 NavigationRouter.propTypes = {};
 

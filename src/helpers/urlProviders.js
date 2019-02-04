@@ -23,3 +23,15 @@ export const provideFetchDetails = postId => {
 export const provideFetchCommentsByPost = postId => {
     return baseUrl + `api/comment?postId=${postId}`;
 }
+
+export const provideLogoffUrl = () => {
+    return baseUrl + 'api/auth/logout';
+}
+
+export const provideCreatePostUrl = () => {
+    return baseUrl + 'api/post';
+}
+
+export const provideCreateCommentUrl = (postId) => {
+    return baseUrl + `api/comment?postId=${postId}`;
+}

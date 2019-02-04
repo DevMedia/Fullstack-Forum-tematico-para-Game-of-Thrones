@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { commentsFetchByPost } from '../reduxModules/comments/actions';
 import CommentList from '../components/comments/CommentsList';
+import CommentsPlaceHolder from '../components/comments/CommentsPlaceHolder';
 
 export class CommentsList extends Component {
     static propTypes = {
@@ -17,11 +18,10 @@ export class CommentsList extends Component {
     render() {
         const { commentsList } = this.props;
 
-        // return commentsList.length === 0 
-        //     ? <h1>placeholder</h1>
-        //     : <CommentList comments={commentsList} />;
+        return commentsList.length === 0 
+            ? <CommentsPlaceHolder />
+            : <CommentList comments={commentsList} />;
 
-        return commentsList.length !== 0 && <CommentList comments={commentsList} />;
     }
 }
 

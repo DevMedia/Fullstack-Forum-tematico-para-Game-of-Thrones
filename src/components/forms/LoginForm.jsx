@@ -11,6 +11,7 @@ const LoginForm = ({email, password, handleChange, submitLogin})  => (
         <div className="form-group">
             <label htmlFor="email">Endereço de Email</label>
             <input
+                name="id"
                 className="form-control"
                 id="email"
                 type="text"

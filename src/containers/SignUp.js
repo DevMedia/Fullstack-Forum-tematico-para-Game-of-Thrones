@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import SignUpForm from '../components/forms/SignUpForm';
 import { authSignUp } from '../reduxModules/auth/actions';
@@ -21,13 +22,13 @@ export class SignUp extends Component {
 
     static propTypes = {
         authSignUp: PropTypes.func,
-        userIsLogged: PropTypes.bool
+        auth: PropTypes.object
     };
 
-    handleChange(name) {
+    handleChange(input) {
         return event => {
             this.setState({
-                [name]: event.target.value,
+                [input]: event.target.value,
             });
         };
     }
@@ -43,6 +44,12 @@ export class SignUp extends Component {
 
     render() {
         const { name, email, password } = this.state;
+        const { userIsLogged } = this.props.auth;
+
+        if (userIsLogged) {
+            return <Redirect to="/" />;
+        }
+
         return (
             <SignUpForm 
                 name={name}
@@ -56,7 +63,7 @@ export class SignUp extends Component {
 }
 
 const mapStateToProps = state => ({
-    userIsLogged: state.auth.userIslogged
+    auth: state.auth
 });
 
 const mapDispatchToProps = {

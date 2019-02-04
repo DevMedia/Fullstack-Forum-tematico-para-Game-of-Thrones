@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import LoginForm from '../components/forms/LoginForm';
 import { authLogin } from '../reduxModules/auth/actions';
@@ -23,10 +24,10 @@ export class Login extends Component {
         userIsLogged: PropTypes.bool
     };
 
-    handleChange(name) {
+    handleChange(input) {
         return event => {
             this.setState({
-                [name]: event.target.value,
+                [input]: event.target.value,
             });
         };
     }
@@ -38,6 +39,12 @@ export class Login extends Component {
 
     render() {
         const { email, password } = this.state;
+        const { userIsLogged } = this.props;
+
+        if (userIsLogged) {
+            return <Redirect to="/" />;
+        }
+
         return (
             <LoginForm
                 email={email}

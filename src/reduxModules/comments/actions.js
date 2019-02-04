@@ -1,5 +1,7 @@
 import * as types from './types';
-import { provideFetchCommentsByPost } from '../../helpers/urlProviders';
+import { provideFetchCommentsByPost, provideCreateCommentUrl } from '../../helpers/urlProviders';
+import { retrieveToken } from '../../helpers/tokenManager';
+import { authLogoff } from '../auth/actions';
 
 export const commentsFetchByPost = postId => async dispatch => {
     const url = provideFetchCommentsByPost(postId);
@@ -13,4 +15,31 @@ export const commentsFetchByPost = postId => async dispatch => {
 
 export const commentsFetchByAuthor = authorId => async dispatch => {
        
+};
+
+export const commentsCreateComment = (postId, authorId, commentBody) => async dispatch => {
+    const url = provideCreateCommentUrl(postId);
+    const token = retrieveToken();
+    const requestBody = JSON.stringify({
+        body: commentBody
+    });
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            body: requestBody,
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            }),
+        });
+        if (response.status === 401) {
+            return await authLogoff(token)(dispatch);
+        }
+
+        return commentsFetchByPost(postId)(dispatch);
+
+    } catch (error) {
+        console.error(error);
+    }
 };

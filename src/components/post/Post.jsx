@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 
-import CommentsList from '../../containers/CommentsList';
 
 const Post = ({ post }) => {
 
@@ -27,7 +26,6 @@ const Post = ({ post }) => {
                     </div>
                 </div>
             </div>
-            <CommentsList postId={post.id} />
         </div>
     );
 };
