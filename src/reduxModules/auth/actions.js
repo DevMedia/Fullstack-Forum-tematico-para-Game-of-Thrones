@@ -11,74 +11,100 @@ import {
     retrieveToken,
     removeToken,
 } from '../../helpers/tokenManager';
+import {
+    exceptionsAuthLoginRejected,
+    exceptionsHandleFetchErrors,
+    exceptionsFetchRejection,
+} from '../exceptions/actions';
 
 export const authLogin = (email, password) => async dispatch => {
-    const url = provideLoginUrl();
-    const body = JSON.stringify({ email, password });
+    try {
+        const url = provideLoginUrl();
+        const body = JSON.stringify({ email, password });
 
-    const response = await fetch(url, {
-        method: 'POST',
-        headers: new Headers({
-            'Content-Type': 'application/json',
-        }),
-        body,
-    });
-
-    if (response.status === 200) {
-        const value = await response.json();
-        const token = value.token;
-
-        const userData = jwtDecode(token);
-        storeToken(token);
-
-        dispatch({
-            type: types.AUTH_LOGIN,
-            payload: {
-                userData,
-                userIsLogged: true,
-            },
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+            }),
+            body,
         });
+
+        if (response.status !== 200) {
+            return exceptionsAuthLoginRejected(response)(dispatch);
+        }
+
+        if (response.status === 200) {
+            const value = await response.json();
+            const token = value.token;
+
+            const userData = jwtDecode(token);
+            storeToken(token);
+
+            return dispatch({
+                type: types.AUTH_LOGIN,
+                payload: {
+                    userData,
+                    userIsLogged: true,
+                },
+            });
+        }
+    } catch (error) {
+        return exceptionsHandleFetchErrors(error)(dispatch);
     }
 };
 
-export const authLogoff = token => async dispatch => {
-    const url = provideLogoffUrl();
+export const authLogoff = (push) => async dispatch => {
+    try {
+        const token = retrieveToken();
+        const url = provideLogoffUrl();
 
-    if (token) {
-        fetch(url, { method: 'POST' });
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            }),
+        });
+
+        if (response.status !== 200) {
+            return exceptionsFetchRejection(response)(dispatch);
+        }
+
+        removeToken();
+
+        return dispatch({
+            type: types.AUTH_LOGOFF,
+            payload: {
+                userIsLogged: false,
+                userData: {},
+            },
+        });
+    } catch (error) {
+        return exceptionsHandleFetchErrors(error)(dispatch);
     }
-
-    removeToken();
-
-    return dispatch({
-        type: types.AUTH_LOGOFF,
-        payload: {
-            userIsLogged: false,
-            userData: {}
-        },
-    });
 };
 
 export const authSignUp = (name, email, password) => async dispatch => {
-    const url = provideSignUpUrl();
-    const body = JSON.stringify({ name, email, password });
+    try {
+        const url = provideSignUpUrl();
+        const body = JSON.stringify({ name, email, password });
 
-    const response = await fetch(url, {
-        method: 'POST',
-        headers: new Headers({
-            'Content-Type': 'application/json',
-        }),
-        body,
-    });
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+            }),
+            body,
+        });
 
-    if (response.status === 201) {
+        if (response.status !== 201) {
+            return exceptionsFetchRejection(response)(dispatch);
+        }
         return authLogin(email, password)(dispatch);
+    } catch (error) {
+        return exceptionsHandleFetchErrors(error)(dispatch);
     }
-
-    // dispatch({
-    //     type: types.AUTH_SIGNUP,
-    //     payload: response.status === 201
-    // });
 };
 
 export const authRetrieveUserData = () => async dispatch => {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { commentsFetchByPost } from '../reduxModules/comments/actions';
-import CommentList from '../components/comments/CommentsList';
+import CommentsListPresentation from '../components/comments/CommentsList';
 import CommentsPlaceHolder from '../components/comments/CommentsPlaceHolder';
 
 export class CommentsList extends Component {
@@ -20,7 +20,7 @@ export class CommentsList extends Component {
 
         return commentsList.length === 0 
             ? <CommentsPlaceHolder />
-            : <CommentList comments={commentsList} />;
+            : <CommentsListPresentation comments={commentsList} />;
 
     }
 }

@@ -43,7 +43,6 @@ export class CreatePost extends Component {
         this.setState({
             postStatus: 'created'
         });
-        // TODO: escrever postes por aqui
     }
 
     componentWillMount() {
@@ -53,17 +52,20 @@ export class CreatePost extends Component {
     }
 
     render() {
-        const { title, body } = this.state;
+        const { title, body, postStatus } = this.state;
         const { userIsLogged } = this.props.auth;
-        if (!userIsLogged) return <Redirect to="/login" />;
-        if (this.state.postStatus === 'created') return <Redirect to="/" />;
+
         return (
-            <PostForm
-                title={title}
-                body={body}
-                handleChange={this.handleChange}
-                handleSubmit={this.handleSubmit}
-            />
+            <div>
+                {userIsLogged || <Redirect to="/login" />}
+                {postStatus === 'created' && <Redirect to="/" />}
+                <PostForm
+                    title={title}
+                    body={body}
+                    handleChange={this.handleChange}
+                    handleSubmit={this.handleSubmit}
+                />
+            </div>
         );
     }
 }

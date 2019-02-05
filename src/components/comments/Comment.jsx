@@ -5,10 +5,10 @@ const Comment = ({ comment }) => {
     const date = new Date(comment.createdAt);
     const commentDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
     return (
-        <div className="list-group-item text-left">
+        <div className="text-left list-group-item list-group-item-action flex-column align-items-start mt-3">
             <h5 className="text-muted">{comment.author.name}</h5>
             <p>{comment.body}</p>
-            <h6 className="text-right text-muted">{commentDate}</h6>
+            <p className="text-right text-muted">{commentDate}</p>
         </div>
     );
 };

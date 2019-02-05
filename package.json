@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "email-validator": "^2.0.4",
     "holderjs": "^2.9.6",
     "jwt-decode": "^2.2.0",
     "node-sass": "^4.11.0",
+    "password-validator": "^4.1.1",
     "placeholder-loading": "^0.1.5",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",

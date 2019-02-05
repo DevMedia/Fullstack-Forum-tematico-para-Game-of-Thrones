@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import NavigationRouter from '../components/navigation/NavigationRouter';
-import Navbar from '../components/navigation/Navbar';
-import { authCheckUserIsLogged, authLogoff } from '../reduxModules/auth/actions';
+import Navbar from './Navbar';
+import { authCheckUserIsLogged } from '../reduxModules/auth/actions';
+import Footer from '../components/Footer';
 
 export class AppContainer extends Component {
     componentDidMount() {
@@ -12,21 +13,17 @@ export class AppContainer extends Component {
     }
 
     render() {
-        const { authLogoff } = this.props;
-        const { userIsLogged } = this.props.auth;
-
         return (
             <BrowserRouter>
-                <div className="App">
-                    <header>
-                        <Navbar 
-                            userIsLogged={userIsLogged}
-                            authLogoff={authLogoff}
-                        />
+                <div>
+                    <header className="mb-3">
+                        {/* <Navbar /> */}
+                        <Route component={Navbar} />
                     </header>
-                    <div>
+                    <div className="container">
                         <NavigationRouter />
                     </div>
+                    <Footer />
                 </div>
             </BrowserRouter>
         );
@@ -39,7 +36,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
     authCheckUserIsLogged,
-    authLogoff
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppContainer)
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(AppContainer);

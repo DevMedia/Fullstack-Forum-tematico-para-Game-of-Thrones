@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { postsFetchAll, postsFetchByAuthor} from '../reduxModules/posts/actions';
 import PostsListPlaceholder from '../components/post/PostsListPlaceholder';
-import PostsList from '../components/post/PostsList';
+import PostsListPresentation from '../components/post/PostsList';
 export class PostListHoC extends Component {
 
     static propTypes = {
@@ -27,7 +27,7 @@ export class PostListHoC extends Component {
 
         return posts.length === 0
             ? <PostsListPlaceholder />
-            : <PostsList posts={posts} /> ;
+            : <PostsListPresentation posts={posts} /> ;
 
     }
 }

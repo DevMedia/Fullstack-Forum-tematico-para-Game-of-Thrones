@@ -2,51 +2,55 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const SignUpForm = ({ handleChange, submitSignUp, name, password}) => (
-<div className="row">
-    <div className="card col col-12 col-lg-4 align-self-center">
-    <br/>
-    <form className="align-self-center">
-        <h3>Cadastro</h3>
-        <div className="form-group">
-            <label htmlFor="name">Informe seu nome</label>
-            <input
-                type="text"
-                className="form-control"
-                id="name"
-                required
-                onChange={handleChange('name')}
-            />
+const SignUpForm = ({ handleChange, submitSignUp, name, password }) => (
+    <div className="row">
+        <div className="card col col-12 col-lg-8 align-self-center">
+            <form className="pb-3 pt-3">
+                <fieldset>
+                    <legend>Cadastro</legend>
+                    <div className="form-group">
+                        <label htmlFor="name">Nome</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="name"
+                            required
+                            onChange={handleChange('name')}
+                            placeholder="Linus Torvalds..."
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="email">E-mail</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="email"
+                            required
+                            onChange={handleChange('email')}
+                            placeholder="linust@torvalds.com"
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="password">Senha</label>
+                        <input
+                            type="password"
+                            className="form-control"
+                            id="password"
+                            required
+                            onChange={handleChange('password')}
+                            placeholder="Mínimo de 4 caracteres."
+                        />
+                    </div>
+                    <button className="btn btn-success" onClick={submitSignUp}>
+                        Cadastrar
+                    </button>
+                </fieldset>
+            </form>
+            <div className="mb-3 mt-3">
+                <Link to={'Login'}>Já possuo cadastro</Link>
+            </div>
         </div>
-        <div className="form-group">
-            <label htmlFor="email">Informe seu e-mail</label>
-            <input
-                type="text"
-                className="form-control"
-                id="email"
-                required
-                onChange={handleChange('email')}
-            />
-        </div>
-        <div className="form-group">
-            <label htmlFor="password">Digite sua senha</label>
-            <input
-                type="password"
-                className="form-control"
-                id="password"
-                required
-                onChange={handleChange('password')}
-            />
-        </div>
-        <button className="btn btn-success" onClick={submitSignUp}>
-            Login
-        </button>
-    </form>
-    <br/>
-    <Link to={'Login'}> Vai se logar </Link>
-    <br/>
     </div>
-</div>
 );
 
 SignUpForm.propTypes = {

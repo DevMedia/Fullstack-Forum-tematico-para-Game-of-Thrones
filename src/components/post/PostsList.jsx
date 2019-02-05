@@ -6,17 +6,15 @@ import PostListItem from './PostListItem';
 
 const PostsList = ({ posts }) => (
     <div>
-        <div className="card">
-            <Link to="/create/post" className="btn btn-primary">+ Novo Post</Link>
-        </div>
         <div className="list-group">
             {posts.map(post => (
-                <div
-                    className="list-group-item list-group-item-action flex-column align-items-start"
-                    key={post.id}>
-                    <PostListItem post={post} />
-                </div>
+                <PostListItem post={post} key={post.id} />
             ))}
+        </div>
+        <div className="card">
+            <Link to="/create/post" className="btn btn-primary">
+                <span className="oi oi-plus" /> Novo Post
+            </Link>
         </div>
     </div>
 );

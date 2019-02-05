@@ -4,19 +4,20 @@ import { Link } from 'react-router-dom';
 
 const LoginForm = ({email, password, handleChange, submitLogin})  => (
 <div className="row">
-    <div className="card col col-12 col-lg-4 align-self-center">
-<br/>
-    <form className="align-self-center">
-        <h3>Login</h3>
+    <div className="card col-lg-8 align-self-center">
+    <form className="pb-3 pt-3">
+        <fieldset>
+            <legend>Login</legend>
         <div className="form-group">
-            <label htmlFor="email">Endereço de Email</label>
+            <label htmlFor="email">E-mail</label>
             <input
                 name="id"
                 className="form-control"
                 id="email"
-                type="text"
+                type="text" 
                 value={email}
                 onChange={handleChange('email')}
+                placeholder="linust@torvalds.com"
             />
         </div>
         <div className="form-group">
@@ -27,13 +28,17 @@ const LoginForm = ({email, password, handleChange, submitLogin})  => (
                 className="form-control"
                 value={password}
                 onChange={handleChange('password')}
+                placeholder="••••"
             />
         </div>
         <button className="btn btn-success" onClick={submitLogin}>Login</button>
+        </fieldset>
     </form>
-        <br/>
-        <Link to={'SignUp'}> Vai se cadastrar </Link>
-        <br/>
+        
+        <div className="mt-3 mb-3">
+            <Link to={'SignUp'}>Cadastre-se</Link>
+        </div>
+        
     </div>
 </div>
 );

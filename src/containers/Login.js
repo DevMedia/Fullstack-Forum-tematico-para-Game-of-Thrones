@@ -41,17 +41,16 @@ export class Login extends Component {
         const { email, password } = this.state;
         const { userIsLogged } = this.props;
 
-        if (userIsLogged) {
-            return <Redirect to="/" />;
-        }
-
         return (
-            <LoginForm
-                email={email}
-                password={password}
-                handleChange={this.handleChange}
-                submitLogin={this.submitLogin}
-            />
+            <div>
+                {userIsLogged && <Redirect to="/" />}
+                <LoginForm
+                    email={email}
+                    password={password}
+                    handleChange={this.handleChange}
+                    submitLogin={this.submitLogin}
+                />
+            </div>
         );
     }
 }

@@ -2,9 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import emailValidator from 'email-validator';
+import PasswordValidator from 'password-validator';
 
 import SignUpForm from '../components/forms/SignUpForm';
 import { authSignUp } from '../reduxModules/auth/actions';
+import {
+    exceptionInvalidName,
+    exceptionInvalidEmail,
+    exceptionInvalidPassword,
+} from '../reduxModules/exceptions/actions';
 
 export class SignUp extends Component {
     constructor(props) {
@@ -13,7 +20,7 @@ export class SignUp extends Component {
         this.state = {
             name: '',
             email: '',
-            password: ''
+            password: '',
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -22,7 +29,10 @@ export class SignUp extends Component {
 
     static propTypes = {
         authSignUp: PropTypes.func,
-        auth: PropTypes.object
+        auth: PropTypes.object,
+        exceptionInvalidName: PropTypes.func,
+        exceptionInvalidEmail: PropTypes.func,
+        exceptionInvalidPassword: PropTypes.func,
     };
 
     handleChange(input) {
@@ -33,41 +43,80 @@ export class SignUp extends Component {
         };
     }
 
+    validatePassword(password) {
+        const passwordValidator = new PasswordValidator();
+
+        passwordValidator
+            .is()
+            .min(4)
+            .has()
+            .not()
+            .spaces();
+
+        if (passwordValidator.validate(password)) {
+            return true;
+        }
+        this.props.exceptionInvalidPassword();
+        return false;
+    }
+
+    validateEmail(email) {
+        if (emailValidator.validate(email)) {
+            return true;
+        }
+        this.props.exceptionInvalidEmail();
+        return false;
+    }
+
+    validateName(name) {
+        if (name.length > 0 && typeof name === 'string') {
+            return true;
+        }
+        this.props.exceptionInvalidName();
+        return false;
+    }
+
     submitSignUp(event) {
         event.preventDefault();
-        this.props.authSignUp(
-            this.state.name,
-            this.state.email,
-            this.state.password
-        );
+        const { name, email, password } = this.state;
+
+        if (
+            this.validateName(name) &&
+            this.validateEmail(email) &&
+            this.validatePassword(password)
+        ) {
+            this.props.authSignUp(name, email, password);
+        }
     }
 
     render() {
         const { name, email, password } = this.state;
         const { userIsLogged } = this.props.auth;
 
-        if (userIsLogged) {
-            return <Redirect to="/" />;
-        }
-
         return (
-            <SignUpForm 
-                name={name}
-                email={email}
-                password={password}
-                handleChange={this.handleChange}
-                submitSignUp={this.submitSignUp}
-            />
+            <div>
+                {userIsLogged && <Redirect to="/" />}
+                <SignUpForm
+                    name={name}
+                    email={email}
+                    password={password}
+                    handleChange={this.handleChange}
+                    submitSignUp={this.submitSignUp}
+                />
+            </div>
         );
     }
 }
 
 const mapStateToProps = state => ({
-    auth: state.auth
+    auth: state.auth,
 });
 
 const mapDispatchToProps = {
-    authSignUp
+    authSignUp,
+    exceptionInvalidName,
+    exceptionInvalidEmail,
+    exceptionInvalidPassword,
 };
 
 export default connect(

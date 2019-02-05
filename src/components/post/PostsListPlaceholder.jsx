@@ -11,7 +11,8 @@ function renderPlaceholders(times = 5) {
         items[index] = (
             <div
                 className="list-group-item list-group-item-action flex-column align-items-start disabled"
-                key={index}>
+                key={index}
+            >
                 <div className="row d-flex w-100 justify-content-between">
                     <div className="col col-12 text-left">
                         <div className="ph-col-12">
@@ -29,7 +30,5 @@ function renderPlaceholders(times = 5) {
     }
     return items;
 }
-
-PostsListPlaceholder.propTypes = {};
 
 export default PostsListPlaceholder;
