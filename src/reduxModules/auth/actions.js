@@ -57,6 +57,7 @@ export const authLogin = (email, password) => async dispatch => {
 export const authLogoff = (push) => async dispatch => {
     try {
         const token = retrieveToken();
+        console.log(token)
         const url = provideLogoffUrl();
 
         const response = await fetch(url, {

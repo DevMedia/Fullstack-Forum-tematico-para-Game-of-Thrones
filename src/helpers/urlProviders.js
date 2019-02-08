@@ -4,8 +4,8 @@ export const provideLoginUrl = () => {
     return baseUrl + 'api/auth/login';
 }
 
-export const provideFetchAllPostsUrl  = () => {
-    return baseUrl + 'api/post';
+export const provideFetchAllPostsUrl  = (page = 1) => {
+    return baseUrl + `api/post?page=${page}`;
 }
 
 export const provideSignUpUrl = () => {

@@ -36,13 +36,18 @@ export class CreatePost extends Component {
     handleSubmit(event) {
         event.preventDefault();
         
-        this.props.postsCreatePost(
-            this.state.title,
-            this.state.body
-        );
-        this.setState({
-            postStatus: 'created'
-        });
+        if (
+            this.state.title.length > 0 &&
+            this.state.body.length > 0 
+        ) {
+            this.props.postsCreatePost(
+                this.state.title,
+                this.state.body
+            );
+            this.setState({
+                postStatus: 'created'
+            });
+        }
     }
 
     componentWillMount() {

@@ -35,15 +35,15 @@ export class CreateComment extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        this.props.commentsCreateComment(
-            this.props.postId,
-            this.props.auth.userData.id,
-            this.state.body
-        );
-
-        this.setState({
-            commentStatus: 'created',
-        });
+        if (this.state.body.length > 0) {
+            this.props.commentsCreateComment(
+                this.props.postId,
+                this.props.auth.userData.id,
+                this.state.body
+            );
+    
+            window.scrollTo(0, 0);
+        }
     }
 
     render() {
@@ -52,7 +52,6 @@ export class CreateComment extends Component {
 
         return (
             <div>
-                {this.state.commentStatus === 'created' && <Redirect to="/" />}
                 {userIsLogged &&
                 <CommentForm
                     body={body}

@@ -45,9 +45,10 @@ const LoginForm = ({email, password, handleChange, submitLogin})  => (
 
 
 LoginForm.propTypes = {
-    handleChange: PropTypes.func,
     email: PropTypes.string,
-    password: PropTypes.string
+    password: PropTypes.string,
+    handleChange: PropTypes.func,
+    submitLogin: PropTypes.func
 }
 
 export default LoginForm;

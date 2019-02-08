@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
+import logo from '../../assets/got-community.png';
 
 export const Navbar = props => (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <Link to="/" className="navbar-brand" onClick={props.closeBurger}>
-            <h3>GoT Community</h3>
+            <img src={logo} alt="Home" className="brand"/>
         </Link>
         <button className="navbar-toggler" onClick={props.toggleBurger}>
             <span className="navbar-toggler-icon" />
@@ -14,6 +15,7 @@ export const Navbar = props => (
         <div
             className={`collapse navbar-collapse ${props.menuIsOpen && 'show'}`}
             id="navbarNav"
+            onClick={props.closeBurger}
         >
             {props.userIsLogged || (
                 <ul className="navbar-nav mr-auto text-left">

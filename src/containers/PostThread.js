@@ -18,6 +18,7 @@ export class PostThread extends Component {
     componentDidMount() {
         const { postId } = this.props.match.params;
         this.props.postsFetchDetails(postId);
+        window.scrollTo(0, 0);
     }
 
     render() {

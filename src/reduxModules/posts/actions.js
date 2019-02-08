@@ -30,6 +30,24 @@ export const postsFetchAll = () => async dispatch => {
     }
 };
 
+export const postsFetchNextPage = (page) => async dispatch => {
+    try {
+        const url = provideFetchAllPostsUrl(page);
+        const response = await fetch(url);
+
+        if (response.status !== 200) {
+            return exceptionsFetchRejection(response)(dispatch);
+        }
+
+        return dispatch({
+            type: types.POST_FETCH_NEXT_PAGE,
+            payload: response.status === 200 ? await response.json() : [],
+        });
+    } catch (error) {
+        return exceptionsHandleFetchErrors(error)(dispatch);
+    }
+}
+
 export const postsFetchByAuthor = authorId => async dispatch => {
     try {
         const url = provideFetchPostsByAuthorUrl(authorId);

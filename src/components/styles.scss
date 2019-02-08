@@ -3,3 +3,22 @@
 .post-title {
     word-break: break-all;
 }
+
+div.ph-row > div {
+    background-color: #f4f4f4;
+}
+
+div.body {
+    background-image: url(../assets/map.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 30% 0%;
+}
+
+a.card {
+    box-shadow: 12px 15px 20px rgba(0, 0, 0, 0.2);
+}
+
+img.brand {
+    width: 300px;
+}

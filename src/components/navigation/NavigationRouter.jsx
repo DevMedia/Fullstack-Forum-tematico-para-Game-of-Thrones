@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Login from '../../containers/Login';
 import SignUp from '../../containers/SignUp';
-import Home from '../Home';
+import PostsList from '../../containers/PostList';
 import PostThread from '../../containers/PostThread';
 import CreatePost from '../../containers/CreatePost';
 import NotFoundPage from './NotFoundPage';
@@ -15,7 +15,7 @@ const NavigationRouter = props => (
                 <Switch>
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/signup" component={SignUp} />
-                    <Route exact path="/" component={Home} />
+                    <Route exact path="/" component={PostsList} />
                     <Route exact path="/post/:postId" component={PostThread} />
                     <Route exact path="/create/post" component={CreatePost} />
                     <Route component={NotFoundPage} />

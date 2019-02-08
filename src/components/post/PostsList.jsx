@@ -4,12 +4,17 @@ import { Link } from 'react-router-dom';
 
 import PostListItem from './PostListItem';
 
-const PostsList = ({ posts }) => (
+const PostsList = ({ posts, showMore }) => (
     <div>
         <div className="list-group">
             {posts.map(post => (
                 <PostListItem post={post} key={post.id} />
             ))}
+        </div>
+        <div className="card mb-3">
+            <button className="btn btn-success" onClick={showMore}>
+                Veja Mais
+            </button>
         </div>
         <div className="card">
             <Link to="/create/post" className="btn btn-primary">
@@ -21,6 +26,7 @@ const PostsList = ({ posts }) => (
 
 PostsList.propTypes = {
     posts: PropTypes.arrayOf(PropTypes.object),
+    showMore: PropTypes.func.isRequired
 };
 
 export default PostsList;

@@ -6,6 +6,7 @@ import NavigationRouter from '../components/navigation/NavigationRouter';
 import Navbar from './Navbar';
 import { authCheckUserIsLogged } from '../reduxModules/auth/actions';
 import Footer from '../components/Footer';
+import Main from '../components/Main';
 
 export class AppContainer extends Component {
     componentDidMount() {
@@ -14,18 +15,18 @@ export class AppContainer extends Component {
 
     render() {
         return (
-            <BrowserRouter>
-                <div>
-                    <header className="mb-3">
-                        {/* <Navbar /> */}
-                        <Route component={Navbar} />
-                    </header>
-                    <div className="container">
-                        <NavigationRouter />
-                    </div>
-                    <Footer />
-                </div>
-            </BrowserRouter>
+            // <BrowserRouter>
+            //     <div>
+            //         <header className="mb-3">
+            //             <Route component={Navbar} />
+            //         </header>
+            //         <div className="container">
+            //             <NavigationRouter />
+            //         </div>
+            //         <Footer />
+            //     </div>
+            // </BrowserRouter>
+            <Main />
         );
     }
 }
