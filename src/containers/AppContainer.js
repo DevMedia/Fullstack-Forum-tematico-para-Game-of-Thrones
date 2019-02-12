@@ -15,17 +15,6 @@ export class AppContainer extends Component {
 
     render() {
         return (
-            // <BrowserRouter>
-            //     <div>
-            //         <header className="mb-3">
-            //             <Route component={Navbar} />
-            //         </header>
-            //         <div className="container">
-            //             <NavigationRouter />
-            //         </div>
-            //         <Footer />
-            //     </div>
-            // </BrowserRouter>
             <Main />
         );
     }

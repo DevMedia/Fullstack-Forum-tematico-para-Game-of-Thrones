@@ -6,9 +6,8 @@ const Comment = ({ comment }) => {
     const commentDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
     return (
         <div className="text-left list-group-item list-group-item-action flex-column align-items-start mt-3">
-            <h5 className="text-muted">{comment.author.name}</h5>
-            <p>{comment.body}</p>
-            <p className="text-right text-muted">{commentDate}</p>
+            <p className="lead">{comment.body}</p>
+            <p className="text-right text-muted"><img src={`https://api.adorable.io/avatars/40/${comment.author.createdAt}`} alt="Avatar" className="avatar" /> {`${comment.author.name}, ${commentDate}`}</p>
         </div>
     );
 };

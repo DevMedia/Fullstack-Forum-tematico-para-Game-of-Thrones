@@ -4,13 +4,33 @@ import { Link } from 'react-router-dom';
 
 const PostListItem = ({ post }) => {
     const date = new Date(post.createdAt);
-    const postDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    const postDate = `${date.getDate()}/${date.getMonth() +
+        1}/${date.getFullYear()}`;
+
     return (
-            <Link to={'/post/' + post.id} className="card list-group-item-action mb-5">
-            <div className="card-body">
-                <h4 className="post-title">{post.title}</h4>
-                <p className="mt-0">{post.author.name}</p>
-                <p className="text-muted text-right">{postDate}</p>
+        <Link
+            to={'/post/' + post.id}
+            className="list-group-item list-group-item-action">
+            <div className="row">
+                <div className="col-lg-10 col-9">
+                    <h4 className="post-title">{post.title}</h4>
+                    <p>
+                        {post.body.substr(0, 300)}{' '}
+                        {post.body.length > 300 && '...'}
+                    </p>
+                </div>
+                <div className="col-lg-2 col-3 justify-content-right">
+                    <img
+                        src={`https://api.adorable.io/avatars/40/${post.author.createdAt}`}
+                        alt="Avatar"
+                        className="avatar"
+                    />
+                    <p>{post.author.name}</p>
+                    <p>
+                        <span className="text-blue">{postDate}</span>
+                    </p>
+                </div>
+                <div className="col" />
             </div>
         </Link>
     );

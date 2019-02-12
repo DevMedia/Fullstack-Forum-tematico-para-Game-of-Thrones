@@ -25,7 +25,7 @@ export class PostThread extends Component {
         const { postDetails } = this.props;
 
         return  (
-            <div>
+            <div className="container">
                 {postDetails.id 
                     ? <Post post={postDetails}/>
                     : <PostPlaceholder />

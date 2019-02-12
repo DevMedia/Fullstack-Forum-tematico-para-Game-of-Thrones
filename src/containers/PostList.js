@@ -45,11 +45,9 @@ export class PostList extends Component {
     render() {
         const { posts } = this.props;
 
-        return posts.length === 0 ? (
-            <PostsListPlaceholder />
-        ) : (
-            <PostsListPresentation posts={posts} showMore={this.paginate}/>
-        );
+        return posts.length === 0 
+            ? <PostsListPlaceholder />
+            : <PostsListPresentation posts={posts} showMore={this.paginate}/>;
     }
 }
 

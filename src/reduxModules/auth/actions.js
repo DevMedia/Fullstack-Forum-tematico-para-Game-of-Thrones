@@ -57,7 +57,6 @@ export const authLogin = (email, password) => async dispatch => {
 export const authLogoff = (push) => async dispatch => {
     try {
         const token = retrieveToken();
-        console.log(token)
         const url = provideLogoffUrl();
 
         const response = await fetch(url, {
@@ -68,11 +67,11 @@ export const authLogoff = (push) => async dispatch => {
             }),
         });
 
+        removeToken();
+
         if (response.status !== 200) {
             return exceptionsFetchRejection(response)(dispatch);
         }
-
-        removeToken();
 
         return dispatch({
             type: types.AUTH_LOGOFF,

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const SignUpForm = ({ handleChange, submitSignUp, name, password }) => (
-    <div className="row">
-        <div className="card col col-12 col-lg-8 align-self-center">
+    <div className="row justify-content-center">
+        <div className="card col-12 col-lg-6 align-self-center">
             <form className="pb-3 pt-3">
                 <fieldset>
                     <legend>Cadastro</legend>
