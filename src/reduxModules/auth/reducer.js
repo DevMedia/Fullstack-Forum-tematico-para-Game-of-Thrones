@@ -14,7 +14,7 @@ export default (state = initialState, { type, payload }) => {
             return { ...state, userIsLogged: payload };
 
         case types.AUTH_LOGOFF:
-            return { ...state, ...payload};
+            return { ...payload };
 
         case types.AUTH_RETRIEVE_USER_DATA:
             return { ...state, userData: payload };

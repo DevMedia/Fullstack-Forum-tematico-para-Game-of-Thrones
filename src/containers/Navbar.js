@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import NavbarPresentation from '../components/navigation/Navbar';
 import { authCheckUserIsLogged, authLogoff } from '../reduxModules/auth/actions';
+import { navigationToggleSidebar } from '../reduxModules/navigation/actions';
 
 export class Navbar extends Component {
     constructor(props) {
@@ -51,6 +52,7 @@ export class Navbar extends Component {
                 toggleBurger={this.toggleBurger}
                 closeBurger={this.closeBurger}
                 errorMessage={this.props.errorMessage}
+                toggleSidebar={this.props.navigationToggleSidebar}
             />
         );
     }
@@ -63,7 +65,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
     authCheckUserIsLogged,
-    authLogoff
+    authLogoff,
+    navigationToggleSidebar
 };
 
 export default connect(

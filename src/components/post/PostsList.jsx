@@ -3,39 +3,33 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import PostListItem from './PostListItem';
-import TwitterFrame from '../TwitterFrame';
 
 const PostsList = ({ posts, showMore }) => (
-    <div className="row">
-        <div className="col-lg-8">
-            <div className="list-group align-start mb-3">
-                <div className="list-group-item post-list-header">
-                    <h4>Posts em Destaque</h4>
-                </div>
-                {posts.map(post => (
-                    <PostListItem post={post} key={post.id} />
-                ))}
+    <div className="col-lg-8">
+        <div className="list-group align-start mb-3">
+            <div className="list-group-item post-list-header">
+                <h4>Posts em Destaque</h4>
             </div>
-            <div className="card mb-3">
-                <button className="btn btn-success" onClick={showMore}>
-                    Veja Mais
-                </button>
-            </div>
-            <div className="card mb-3">
-                <Link to="/create/post" className="btn btn-primary">
-                    <span className="oi oi-plus" /> Novo Post
-                </Link>
-            </div>
+            {posts.map(post => (
+                <PostListItem post={post} key={post.id} />
+            ))}
         </div>
-        <div className="col-lg-4">
-            <TwitterFrame />
+        <div className="card mb-3">
+            <button className="btn btn-success" onClick={showMore}>
+                Veja Mais
+            </button>
+        </div>
+        <div className="card mb-3">
+            <Link to="/create/post" className="btn btn-primary">
+                <span className="oi oi-plus" /> Novo Post
+            </Link>
         </div>
     </div>
 );
 
 PostsList.propTypes = {
     posts: PropTypes.arrayOf(PropTypes.object),
-    showMore: PropTypes.func.isRequired
+    showMore: PropTypes.func.isRequired,
 };
 
 export default PostsList;

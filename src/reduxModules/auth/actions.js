@@ -59,6 +59,8 @@ export const authLogoff = (push) => async dispatch => {
         const token = retrieveToken();
         const url = provideLogoffUrl();
 
+        removeToken();
+
         const response = await fetch(url, {
             method: 'POST',
             headers: new Headers({
@@ -66,8 +68,6 @@ export const authLogoff = (push) => async dispatch => {
                 Authorization: `Bearer ${token}`,
             }),
         });
-
-        removeToken();
 
         if (response.status !== 200) {
             return exceptionsFetchRejection(response)(dispatch);

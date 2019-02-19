@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import Navbar from '../containers/Navbar';
 import NavigationRouter from './navigation/NavigationRouter';
+import Sidebar from '../containers/Sidebar';
 import Footer from './Footer';
 import './styles.scss';
 
@@ -11,6 +12,7 @@ const Main = () => (
 <BrowserRouter>
     <div className="">
         <header className="">
+            <Route component={Sidebar} />
             <Route component={Navbar} />
         </header>
         <div className="body pb-5 pt-5">

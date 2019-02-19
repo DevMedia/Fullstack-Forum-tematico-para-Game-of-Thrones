@@ -9,6 +9,7 @@ import {
 } from '../reduxModules/posts/actions';
 import PostsListPlaceholder from '../components/post/PostsListPlaceholder';
 import PostsListPresentation from '../components/post/PostsList';
+import TwitterFrame from '../components/TwitterFrame';
 
 export class PostList extends Component {
     constructor(props) {
@@ -45,9 +46,20 @@ export class PostList extends Component {
     render() {
         const { posts } = this.props;
 
-        return posts.length === 0 
-            ? <PostsListPlaceholder />
-            : <PostsListPresentation posts={posts} showMore={this.paginate}/>;
+        return (
+            <div className="row">
+                {posts.length === 0 
+                    ? <PostsListPlaceholder />
+                    : <PostsListPresentation 
+                        posts={posts} 
+                        showMore={this.paginate}
+                    />
+                }
+            <div className="col-lg-4">
+                <TwitterFrame />
+            </div>
+            </div>
+        );
     }
 }
 

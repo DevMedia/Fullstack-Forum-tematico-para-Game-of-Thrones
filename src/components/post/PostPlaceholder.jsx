@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const PostPlaceholder = props => {
     return (
@@ -12,7 +11,5 @@ const PostPlaceholder = props => {
         </div>
     );
 };
-
-PostPlaceholder.propTypes = {};
 
 export default PostPlaceholder;

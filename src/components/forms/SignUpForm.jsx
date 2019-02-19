@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const SignUpForm = ({ handleChange, submitSignUp, name, password }) => (
+const SignUpForm = ({ handleChange, submitSignUp, name, password, buttonDisabled }) => (
     <div className="row justify-content-center">
         <div className="card col-12 col-lg-6 align-self-center">
             <form className="pb-3 pt-3">
@@ -41,7 +41,11 @@ const SignUpForm = ({ handleChange, submitSignUp, name, password }) => (
                             placeholder="Mínimo de 4 caracteres."
                         />
                     </div>
-                    <button className="btn btn-success" onClick={submitSignUp}>
+                    <button 
+                        className="btn btn-success" 
+                        onClick={submitSignUp}
+                        // disabled={buttonDisabled}
+                    >
                         Cadastrar
                     </button>
                 </fieldset>

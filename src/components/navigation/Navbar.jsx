@@ -6,10 +6,11 @@ import logo from '../../assets/got-community.png';
 
 export const Navbar = props => (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="row">
         <Link to="/" className="navbar-brand" onClick={props.closeBurger}>
             <img src={logo} alt="Home" className="brand"/>
         </Link>
-        <button className="navbar-toggler" onClick={props.toggleBurger}>
+        <button className="navbar-toggler" onClick={props.toggleSidebar}>
             <span className="navbar-toggler-icon" />
         </button>
         <div
@@ -53,10 +54,11 @@ export const Navbar = props => (
         </div>
 
         {props.errorMessage && (
-            <div className="alert alert-danger col-lg-4" role="alert">
+            <div className="alert alert-danger col-12 col-lg-12 mt-2" role="alert">
                 {props.errorMessage}
             </div>
         )}
+        </div>
     </nav>
 );
 

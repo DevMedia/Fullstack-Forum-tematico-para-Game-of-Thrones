@@ -21,6 +21,7 @@ export class SignUp extends Component {
             name: '',
             email: '',
             password: '',
+            // buttonDisabled: false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -85,12 +86,21 @@ export class SignUp extends Component {
             this.validateEmail(email) &&
             this.validatePassword(password)
         ) {
+            this.setState({ buttonDisabled: true });
             this.props.authSignUp(name, email, password);
         }
     }
 
+    // componentDidUpdate(prevProps, prevState) {
+    //     console.log({prevProps: prevProps.errorMessage})
+    //     console.log({props: this.props.errorMessage})
+    //     const { errorMessage } = this.props;
+    //     if (errorMessage !== prevProps.errorMessage)
+    //         this.setState({ buttonDisabled: true });
+    // }
+
     render() {
-        const { name, email, password } = this.state;
+        const { name, email, password, buttonDisabled } = this.state;
         const { userIsLogged } = this.props.auth;
 
         return (
@@ -100,6 +110,7 @@ export class SignUp extends Component {
                     name={name}
                     email={email}
                     password={password}
+                    buttonDisabled={buttonDisabled}
                     handleChange={this.handleChange}
                     submitSignUp={this.submitSignUp}
                 />
@@ -110,6 +121,7 @@ export class SignUp extends Component {
 
 const mapStateToProps = state => ({
     auth: state.auth,
+    errorMessage: state.errorMessage
 });
 
 const mapDispatchToProps = {
