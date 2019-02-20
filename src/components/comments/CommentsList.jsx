@@ -5,10 +5,12 @@ import Comment from './Comment';
 
 const CommentsList = ({ comments }) => {
     return (
-        <div className="list-group">
-            {comments.map(comment => (
-                <Comment comment={comment} key={comment.id} />
-            ))}
+        <div className="mt-3">
+            <div className="list-group">
+                {comments.map(comment => (
+                    <Comment comment={comment} key={comment.id} />
+                ))}
+            </div>
         </div>
     );
 };

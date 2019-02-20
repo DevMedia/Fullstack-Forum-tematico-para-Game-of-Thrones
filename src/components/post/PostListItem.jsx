@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Avatar from '../Avatar';
 
 const PostListItem = ({ post }) => {
     const date = new Date(post.createdAt);
@@ -20,13 +21,10 @@ const PostListItem = ({ post }) => {
                     </p>
                 </div>
                 <div className="col-lg-2 col-3 justify-content-right">
-                    <img
-                        src={`https://api.adorable.io/avatars/40/${post.author.createdAt}`}
-                        alt="Avatar"
-                        className="avatar"
+                    <Avatar 
+                        author={post.author}
+                        postDate={postDate}
                     />
-                    <p>{post.author.name}</p>
-                    <p>{postDate}</p>
                 </div>
             </div>
         </Link>

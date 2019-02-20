@@ -1,13 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Avatar from '../Avatar';
 
 const Comment = ({ comment }) => {
     const date = new Date(comment.createdAt);
     const commentDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
     return (
-        <div className="text-left list-group-item list-group-item-action flex-column align-items-start mt-3">
-            <p className="lead">{comment.body}</p>
-            <p className="text-right text-muted"><img src={`https://api.adorable.io/avatars/40/${comment.author.createdAt}`} alt="Avatar" className="avatar" /> {`${comment.author.name}, ${commentDate}`}</p>
+        <div className="list-group-item">
+            <div className="row justify-content-around pr-3 pl-1">
+                <div className="col-lg-10 col-9">
+                    <p className="lead">{comment.body}</p>
+                </div>
+                <div className="col-lg-2 col-3 justify-content-right">
+                    <Avatar author={comment.author} postDate={commentDate} />
+                </div>
+            </div>
         </div>
     );
 };
