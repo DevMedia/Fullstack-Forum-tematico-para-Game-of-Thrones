@@ -11,7 +11,7 @@ const PostListItem = ({ post }) => {
         <Link
             to={'/post/' + post.id}
             className="list-group-item list-group-item-action">
-            <div className="row">
+            <div className="row justify-content-between pr-3 pl-1">
                 <div className="col-lg-10 col-9">
                     <h4 className="post-title">{post.title}</h4>
                     <p>
@@ -26,11 +26,8 @@ const PostListItem = ({ post }) => {
                         className="avatar"
                     />
                     <p>{post.author.name}</p>
-                    <p>
-                        <span className="text-blue">{postDate}</span>
-                    </p>
+                    <p>{postDate}</p>
                 </div>
-                <div className="col" />
             </div>
         </Link>
     );

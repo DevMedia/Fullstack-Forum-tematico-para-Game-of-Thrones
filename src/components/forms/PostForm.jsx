@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 
 const PostForm = ({ title, body, handleChange, handleSubmit }) => {
     return (
-        <div className="row">
-            <form className="align-self-center col col-12 col-lg-12 align-self center">
-                <div className="card ">
-                    <div className="card-header">
-                        <h3>Novo Post</h3>
-                    </div>
-                    <div className="card-body">
+        <div className="row justify-content-center">
+            <div className="card col-lg-6 align-self-center">
+            <form className="pb-3 pt-3">
+                <fieldset>
+
+                <legend>Novo Post</legend>
                         <div className="form-group">
                             <input
                                 onChange={handleChange('title')}
@@ -35,9 +34,9 @@ const PostForm = ({ title, body, handleChange, handleSubmit }) => {
                             onClick={handleSubmit}>
                             Criar
                         </button>
-                    </div>
-                </div>
+                </fieldset>
             </form>
+            </div>
         </div>
     );
 };

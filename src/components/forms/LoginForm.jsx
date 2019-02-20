@@ -5,7 +5,7 @@ import { Link, Redirect } from 'react-router-dom';
 function LoginForm(props) {
     const { email, password, handleChange, submitLogin, userIsLogged } = props;
     return (
-        <div className="row justify-content-center ">
+        <div className="row justify-content-center">
             {userIsLogged && <Redirect to="/" />}
             <div className="card col-lg-6 align-self-center">
                 <form className="pb-3 pt-3">

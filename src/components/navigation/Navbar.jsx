@@ -6,46 +6,51 @@ import logo from '../../assets/got-community.png';
 
 const Navbar = props => (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="row">
-            <Link to="/" className="navbar-brand" onClick={props.closeBurger}>
-                <img src={logo} alt="Home" className="brand" />
-            </Link>
-            <button className="navbar-toggler" onClick={props.toggleSidebar}>
-                <span className="navbar-toggler-icon" />
-            </button>
-            <div
-                className="collapse navbar-collapse"
-                id="navbarNav">
-                {props.userIsLogged || (
-                    <ul className="navbar-nav mr-auto text-left">
-                        <li className="nav-item">
-                            <Link to="/signup" className="nav-link">
-                                Cadastre-se
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/login" className="nav-link">
-                                Login
-                            </Link>
-                        </li>
-                    </ul>
-                )}
-                {props.userIsLogged && (
-                    <ul className="navbar-nav mr-auto text-left">
-                        <li className="nav-item">
-                            <Link to="/create/post" className="nav-link">
-                                Novo Post
-                            </Link>
-                        </li>
-                        <li
-                            className="nav-item"
-                            onClick={props.authLogoff}>
-                            <Link to="" className="nav-link">
-                                Logoff
-                            </Link>
-                        </li>
-                    </ul>
-                )}
+        <div className="row justify-content-between col-12">
+            <div className="col-9 pl-0 navbar-brand">
+                <Link
+                    to="/"
+                    // className="navbar-brand"
+                    onClick={props.closeBurger}>
+                    <img src={logo} alt="Home" className="brand" />
+                </Link>
+            </div>
+            <div className="col-2">
+                <button
+                    className="navbar-toggler"
+                    onClick={props.toggleSidebar}>
+                    <span className="navbar-toggler-icon" />
+                </button>
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    {props.userIsLogged || (
+                        <ul className="navbar-nav mr-auto text-left">
+                            <li className="nav-item">
+                                <Link to="/signup" className="nav-link">
+                                    Cadastre-se
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/login" className="nav-link">
+                                    Login
+                                </Link>
+                            </li>
+                        </ul>
+                    )}
+                    {props.userIsLogged && (
+                        <ul className="navbar-nav mr-auto text-left">
+                            <li className="nav-item">
+                                <Link to="/create/post" className="nav-link">
+                                    Novo Post
+                                </Link>
+                            </li>
+                            <li className="nav-item" onClick={props.authLogoff}>
+                                <Link to="" className="nav-link">
+                                    Logoff
+                                </Link>
+                            </li>
+                        </ul>
+                    )}
+                </div>
             </div>
 
             {props.errorMessage && (

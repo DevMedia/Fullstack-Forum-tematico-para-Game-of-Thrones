@@ -20,7 +20,8 @@ a.card {
 }
 
 img.brand {
-    width: 280px;
+    width: 100%;
+    max-width: 280px;
 }
 
 card.post-list-header {
@@ -29,6 +30,12 @@ card.post-list-header {
 
 img.avatar {
     border-radius: 50%;
+}
+
+.nav-item {
+    word-wrap: none;
+    white-space: nowrap;
+    white-space: pre;
 }
 
 /* The side navigation menu */
@@ -82,3 +89,4 @@ img.avatar {
         font-size: 18px;
     }
 }
+

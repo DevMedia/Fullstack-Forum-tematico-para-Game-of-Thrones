@@ -23,10 +23,10 @@ export class Sidebar extends Component {
     }
 
     render() {
-        const { sidebarIsOpen } = this.props;
-
+        const { sidebarIsOpen, auth } = this.props;
         return (
             <SidebarPresentation
+                userData={auth.userData}
                 userIsLogged={this.props.auth.userIsLogged}
                 isOpen={sidebarIsOpen}
                 openMenu={this.openMenu}

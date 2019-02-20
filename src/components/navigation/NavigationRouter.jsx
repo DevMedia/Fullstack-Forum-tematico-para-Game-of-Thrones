@@ -11,7 +11,7 @@ import NotFoundPage from './NotFoundPage';
 const NavigationRouter = props => (
     <div className="container-fluid">
         <div className="row justify-content-center">
-            <div className="col col-lg-12">
+            <div className="col-lg-12">
                 <Switch>
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/signup" component={SignUp} />

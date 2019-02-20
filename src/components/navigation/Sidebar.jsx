@@ -5,7 +5,10 @@ export default function Sidebar(props) {
     const width = props.isOpen ? '250px' : '0px';
     return (
         <div id="mySidenav" className="sidenav" style={{ width }}>
-            <Link to="" className="closebtn" onClick={props.closeMenu}>
+            <div className="nav-link">
+            {props.userData.id && <h3>{props.userData.name}</h3>}
+            </div>
+            <Link to="" className="closebtn nav-link" onClick={props.closeMenu}>
                 &times;
             </Link>
             {props.userIsLogged || (
