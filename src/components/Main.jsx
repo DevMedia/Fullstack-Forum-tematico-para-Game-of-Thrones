@@ -8,20 +8,20 @@ import Footer from './Footer';
 import './styles.scss';
 
 const Main = () => (
-<div>
-<BrowserRouter>
-    <div className="">
-        <header className="">
-            <Route component={Sidebar} />
-            <Route component={Navbar} />
-        </header>
-        <div className="body pb-5 pt-5">
-            <NavigationRouter />
+    <BrowserRouter>
+        <div>
+            <header className="header">
+                <Route component={Sidebar} />
+                <Route component={Navbar} />
+            </header>
+            <div className="body pb-5 pt-5">
+                <NavigationRouter />
+            </div>
+            <footer className="footer">
+                <Footer />
+            </footer>
         </div>
-        <Footer />
-    </div>
-</BrowserRouter>
-</div>
+    </BrowserRouter>
 );
 
 export default Main;

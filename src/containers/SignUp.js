@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import emailValidator from 'email-validator';
 import PasswordValidator from 'password-validator';
 
@@ -21,7 +20,6 @@ export class SignUp extends Component {
             name: '',
             email: '',
             password: '',
-            // buttonDisabled: false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -91,30 +89,20 @@ export class SignUp extends Component {
         }
     }
 
-    // componentDidUpdate(prevProps, prevState) {
-    //     console.log({prevProps: prevProps.errorMessage})
-    //     console.log({props: this.props.errorMessage})
-    //     const { errorMessage } = this.props;
-    //     if (errorMessage !== prevProps.errorMessage)
-    //         this.setState({ buttonDisabled: true });
-    // }
-
     render() {
         const { name, email, password, buttonDisabled } = this.state;
         const { userIsLogged } = this.props.auth;
 
         return (
-            <div>
-                {userIsLogged && <Redirect to="/" />}
-                <SignUpForm
-                    name={name}
-                    email={email}
-                    password={password}
-                    buttonDisabled={buttonDisabled}
-                    handleChange={this.handleChange}
-                    submitSignUp={this.submitSignUp}
-                />
-            </div>
+            <SignUpForm
+                userIsLogged={userIsLogged}
+                name={name}
+                email={email}
+                password={password}
+                buttonDisabled={buttonDisabled}
+                handleChange={this.handleChange}
+                submitSignUp={this.submitSignUp}
+            />
         );
     }
 }

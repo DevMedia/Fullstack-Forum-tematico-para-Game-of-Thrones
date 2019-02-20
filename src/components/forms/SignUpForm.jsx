@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
-const SignUpForm = ({ handleChange, submitSignUp, name, password, buttonDisabled }) => (
+const SignUpForm = (props) => (
     <div className="row justify-content-center">
+        {props.userIsLogged && <Redirect to="/" />}
         <div className="card col-12 col-lg-6 align-self-center">
             <form className="pb-3 pt-3">
                 <fieldset>
@@ -15,7 +16,8 @@ const SignUpForm = ({ handleChange, submitSignUp, name, password, buttonDisabled
                             className="form-control"
                             id="name"
                             required
-                            onChange={handleChange('name')}
+                            value={props.name}
+                            onChange={props.handleChange('name')}
                             placeholder="Linus Torvalds..."
                         />
                     </div>
@@ -26,7 +28,8 @@ const SignUpForm = ({ handleChange, submitSignUp, name, password, buttonDisabled
                             className="form-control"
                             id="email"
                             required
-                            onChange={handleChange('email')}
+                            value={props.email}
+                            onChange={props.handleChange('email')}
                             placeholder="linust@torvalds.com"
                         />
                     </div>
@@ -37,14 +40,14 @@ const SignUpForm = ({ handleChange, submitSignUp, name, password, buttonDisabled
                             className="form-control"
                             id="password"
                             required
-                            onChange={handleChange('password')}
+                            value={props.password}
+                            onChange={props.handleChange('password')}
                             placeholder="Mínimo de 4 caracteres."
                         />
                     </div>
                     <button 
                         className="btn btn-success" 
-                        onClick={submitSignUp}
-                        // disabled={buttonDisabled}
+                        onClick={props.submitSignUp}
                     >
                         Cadastrar
                     </button>
@@ -63,6 +66,7 @@ SignUpForm.propTypes = {
     name: PropTypes.string,
     email: PropTypes.string,
     password: PropTypes.string,
+    userIsLogged: PropTypes.bool
 };
 
 export default SignUpForm;

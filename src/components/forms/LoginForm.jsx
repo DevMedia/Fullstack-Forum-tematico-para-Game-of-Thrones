@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 function LoginForm(props) {
-    const { email, password, handleChange, submitLogin } = props;
+    const { email, password, handleChange, submitLogin, userIsLogged } = props;
     return (
         <div className="row justify-content-center ">
+            {userIsLogged && <Redirect to="/" />}
             <div className="card col-lg-6 align-self-center">
                 <form className="pb-3 pt-3">
                     <fieldset>
@@ -40,7 +41,6 @@ function LoginForm(props) {
                         </button>
                     </fieldset>
                 </form>
-
                 <div className="mt-3 mb-3">
                     <Link to={'SignUp'}>Cadastre-se</Link>
                 </div>
@@ -50,6 +50,7 @@ function LoginForm(props) {
 }
 
 LoginForm.propTypes = {
+    userIsLogged: PropTypes.bool,
     email: PropTypes.string,
     password: PropTypes.string,
     handleChange: PropTypes.func,

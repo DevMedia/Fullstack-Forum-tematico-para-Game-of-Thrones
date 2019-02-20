@@ -14,21 +14,7 @@ export class Navbar extends Component {
             menuIsOpen: false,
         };
 
-        this.toggleBurger = this.toggleBurger.bind(this);
-        this.closeBurger = this.closeBurger.bind(this);
         this.logoff = this.logoff.bind(this);
-    }
-
-    toggleBurger() {
-        this.setState(state => ({
-            menuIsOpen: !state.menuIsOpen,
-        }));
-    }
-
-    closeBurger() {
-        this.setState({
-            menuIsOpen: false,
-        });
     }
 
     async logoff() {
@@ -47,10 +33,7 @@ export class Navbar extends Component {
         return (
             <NavbarPresentation 
                 userIsLogged={this.props.auth.userIsLogged}
-                menuIsOpen={this.state.menuIsOpen}
                 authLogoff={this.logoff}
-                toggleBurger={this.toggleBurger}
-                closeBurger={this.closeBurger}
                 errorMessage={this.props.errorMessage}
                 toggleSidebar={this.props.navigationToggleSidebar}
             />

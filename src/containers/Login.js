@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 
 import LoginForm from '../components/forms/LoginForm';
 import { authLogin } from '../reduxModules/auth/actions';
@@ -13,7 +12,7 @@ export class Login extends Component {
         this.state = {
             email: '',
             password: '',
-            buttonEnabled: true
+            buttonEnabled: true,
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -22,7 +21,7 @@ export class Login extends Component {
 
     static propTypes = {
         authLogin: PropTypes.func,
-        userIsLogged: PropTypes.bool
+        userIsLogged: PropTypes.bool,
     };
 
     handleChange(input) {
@@ -43,21 +42,19 @@ export class Login extends Component {
         const { userIsLogged } = this.props;
 
         return (
-            <div>
-                {userIsLogged && <Redirect to="/" />}
-                <LoginForm
-                    email={email}
-                    password={password}
-                    handleChange={this.handleChange}
-                    submitLogin={this.submitLogin}
-                />
-            </div>
+            <LoginForm
+                userIsLogged={userIsLogged}
+                email={email}
+                password={password}
+                handleChange={this.handleChange}
+                submitLogin={this.submitLogin}
+            />
         );
     }
 }
 
 const mapStateToProps = state => ({
-    userIsLogged: state.auth.userIsLogged
+    userIsLogged: state.auth.userIsLogged,
 });
 
 const mapDispatchToProps = {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import SidebarTemplate from '../components/navigation/Sidebar';
+import SidebarPresentation from '../components/navigation/Sidebar';
 import { navigationCloseSidebar } from '../reduxModules/navigation/actions';
 import { authLogoff } from '../reduxModules/auth/actions';
 
@@ -26,7 +26,7 @@ export class Sidebar extends Component {
         const { sidebarIsOpen } = this.props;
 
         return (
-            <SidebarTemplate
+            <SidebarPresentation
                 userIsLogged={this.props.auth.userIsLogged}
                 isOpen={sidebarIsOpen}
                 openMenu={this.openMenu}
