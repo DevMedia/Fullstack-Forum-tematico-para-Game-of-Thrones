@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import NavbarPresentation from '../components/navigation/Navbar';
-import { authCheckUserIsLogged, authLogoff } from '../reduxModules/auth/actions';
+import {
+    authCheckUserIsLogged,
+    authLogoff,
+} from '../reduxModules/auth/actions';
 import { navigationToggleSidebar } from '../reduxModules/navigation/actions';
 
 export class Navbar extends Component {
@@ -17,21 +20,23 @@ export class Navbar extends Component {
         this.logoff = this.logoff.bind(this);
     }
 
-    async logoff() {
-        await this.props.authLogoff();
-        this.props.history.push('/login');
-    }
-    
     static propTypes = {
         auth: PropTypes.object,
         errorMessage: PropTypes.string,
         authCheckUserIsLogged: PropTypes.func,
-        authLogoff: PropTypes.func
+        authLogoff: PropTypes.func,
+        history: PropTypes.object,
+        navigationToggleSidebar: PropTypes.func,
     };
+
+    async logoff() {
+        await this.props.authLogoff();
+        this.props.history.push('/login');
+    }
 
     render() {
         return (
-            <NavbarPresentation 
+            <NavbarPresentation
                 userIsLogged={this.props.auth.userIsLogged}
                 authLogoff={this.logoff}
                 errorMessage={this.props.errorMessage}
@@ -43,13 +48,13 @@ export class Navbar extends Component {
 
 const mapStateToProps = state => ({
     errorMessage: state.errorMessage,
-    auth: state.auth
+    auth: state.auth,
 });
 
 const mapDispatchToProps = {
     authCheckUserIsLogged,
     authLogoff,
-    navigationToggleSidebar
+    navigationToggleSidebar,
 };
 
 export default connect(

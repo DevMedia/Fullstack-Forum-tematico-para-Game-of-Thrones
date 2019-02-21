@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import SidebarPresentation from '../components/navigation/Sidebar';
 import { navigationCloseSidebar } from '../reduxModules/navigation/actions';
@@ -7,11 +8,19 @@ import { authLogoff } from '../reduxModules/auth/actions';
 
 export class Sidebar extends Component {
     constructor(props) {
-      super(props)
-    
-      this.closeMenu = this.closeMenu.bind(this);
-      this.logoff = this.logoff.bind(this);
+        super(props);
+
+        this.closeMenu = this.closeMenu.bind(this);
+        this.logoff = this.logoff.bind(this);
     }
+
+    static propTypes = {
+        navigationCloseSidebar: PropTypes.func,
+        authLogoff: PropTypes.func,
+        history: PropTypes.object,
+        sidebarIsOpen: PropTypes.func,
+        auth: PropTypes.object,
+    };
 
     closeMenu() {
         this.props.navigationCloseSidebar();
@@ -39,12 +48,12 @@ export class Sidebar extends Component {
 
 const mapStateToProps = state => ({
     sidebarIsOpen: state.navigation.sidebarIsOpen,
-    auth: state.auth
+    auth: state.auth,
 });
 
 const mapDispatchToProps = {
     navigationCloseSidebar,
-    authLogoff
+    authLogoff,
 };
 
 export default connect(

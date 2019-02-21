@@ -109,7 +109,7 @@ export class SignUp extends Component {
 
 const mapStateToProps = state => ({
     auth: state.auth,
-    errorMessage: state.errorMessage
+    errorMessage: state.errorMessage,
 });
 
 const mapDispatchToProps = {

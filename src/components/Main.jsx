@@ -7,7 +7,7 @@ import Sidebar from '../containers/Sidebar';
 import Footer from './Footer';
 import './styles.scss';
 
-const Main = () => (
+const Main = props => (
     <BrowserRouter>
         <div>
             <header className="header">

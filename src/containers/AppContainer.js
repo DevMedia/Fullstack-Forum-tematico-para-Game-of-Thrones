@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import NavigationRouter from '../components/navigation/NavigationRouter';
-import Navbar from './Navbar';
 import { authCheckUserIsLogged } from '../reduxModules/auth/actions';
-import Footer from '../components/Footer';
 import Main from '../components/Main';
 
 export class AppContainer extends Component {
+    static propTypes = {
+        authCheckUserIsLogged: PropTypes.func,
+    };
+
     componentDidMount() {
         this.props.authCheckUserIsLogged();
     }
 
     render() {
-        return (
-            <Main />
-        );
+        return <Main />;
     }
 }
 

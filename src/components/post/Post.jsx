@@ -31,7 +31,7 @@ const Post = ({ post }) => {
 };
 
 Post.propTypes = {
-    popst: PropTypes.shape({
+    post: PropTypes.shape({
         id: PropTypes.string,
         title: PropTypes.string,
         body: PropTypes.string,

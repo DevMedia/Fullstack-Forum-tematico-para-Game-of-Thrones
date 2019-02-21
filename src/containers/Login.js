@@ -12,7 +12,6 @@ export class Login extends Component {
         this.state = {
             email: '',
             password: '',
-            buttonEnabled: true,
         };
 
         this.handleChange = this.handleChange.bind(this);

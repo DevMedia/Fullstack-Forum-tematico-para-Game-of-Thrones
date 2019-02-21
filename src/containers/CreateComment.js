@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 
 import CommentForm from './../components/forms/CommentForm';
 import { commentsCreateComment } from '../reduxModules/comments/actions';
@@ -21,7 +20,8 @@ export class CreateComment extends Component {
 
     static propTypes = {
         auth: PropTypes.object,
-        commentsCreateComment: PropTypes.func
+        commentsCreateComment: PropTypes.func,
+        postId: PropTypes.string
     };
 
     handleChange(input) {

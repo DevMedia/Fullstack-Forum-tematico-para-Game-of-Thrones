@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function Avatar(props) {
     const { author, postDate } = props;
@@ -16,3 +17,8 @@ export default function Avatar(props) {
         </div>
     );
 }
+
+Avatar.propTypes = {
+    author: PropTypes.object,
+    postDate: PropTypes.string
+};

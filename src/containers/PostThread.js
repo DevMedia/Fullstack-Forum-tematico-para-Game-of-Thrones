@@ -8,11 +8,11 @@ import PostPlaceholder from '../components/post/PostPlaceholder';
 import CommentsList from './CommentsList';
 import CreateComment from './CreateComment';
 
-
 export class PostThread extends Component {
     static propTypes = {
         match: PropTypes.object,
-        postDetails: PropTypes.object
+        postDetails: PropTypes.object,
+        postsFetchDetails: PropTypes.func,
     };
 
     componentDidMount() {
@@ -24,27 +24,26 @@ export class PostThread extends Component {
     render() {
         const { postDetails } = this.props;
 
-        return  (
+        return (
             <div className="container">
-                {postDetails.id 
-                    ? <Post post={postDetails}/>
-                    : <PostPlaceholder />
-                }
+                {postDetails.id ? (
+                    <Post post={postDetails} />
+                ) : (
+                    <PostPlaceholder />
+                )}
                 <CommentsList postId={this.props.match.params.postId} />
                 <CreateComment postId={this.props.match.params.postId} />
             </div>
         );
-                    
-        
     }
 }
 
 const mapStateToProps = state => ({
-    postDetails: state.posts.postDetails
+    postDetails: state.posts.postDetails,
 });
 
 const mapDispatchToProps = {
-    postsFetchDetails
+    postsFetchDetails,
 };
 
 export default connect(

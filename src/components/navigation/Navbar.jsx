@@ -10,7 +10,6 @@ const Navbar = props => (
             <div className="col-9 pl-0 navbar-brand">
                 <Link
                     to="/"
-                    // className="navbar-brand"
                     onClick={props.closeBurger}>
                     <img src={logo} alt="Home" className="brand" />
                 </Link>
@@ -69,6 +68,7 @@ Navbar.propTypes = {
     authLogoff: PropTypes.func,
     errorMessage: PropTypes.string,
     toggleSidebar: PropTypes.func,
+    closeBurger: PropTypes.func,
 };
 
 export default Navbar;

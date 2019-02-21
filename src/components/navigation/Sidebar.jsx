@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export default function Sidebar(props) {
     const width = props.isOpen ? '250px' : '0px';
@@ -49,3 +50,11 @@ export default function Sidebar(props) {
         </div>
     );
 }
+
+Sidebar.propTypes = {
+    isOpen: PropTypes.func,
+    userData: PropTypes.object,
+    userIsLogged: PropTypes.bool,
+    closeMenu: PropTypes.func,
+    authLogoff: PropTypes.func,
+};

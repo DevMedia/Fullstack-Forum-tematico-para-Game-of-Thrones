@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import PostForm from '../components/forms/PostForm';
-import { postsCreatePost } from '../reduxModules/posts/actions'
+import { postsCreatePost } from '../reduxModules/posts/actions';
 
 export class CreatePost extends Component {
     constructor(props) {
@@ -13,7 +13,7 @@ export class CreatePost extends Component {
         this.state = {
             title: '',
             body: '',
-            postStatus: 'new'
+            postStatus: 'new',
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -22,7 +22,7 @@ export class CreatePost extends Component {
     static propTypes = {
         auth: PropTypes.object,
         posts: PropTypes.object,
-        postsCreatePost: PropTypes.func
+        postsCreatePost: PropTypes.func,
     };
 
     handleChange(input) {
@@ -35,24 +35,18 @@ export class CreatePost extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        
-        if (
-            this.state.title.length > 0 &&
-            this.state.body.length > 0 
-        ) {
-            this.props.postsCreatePost(
-                this.state.title,
-                this.state.body
-            );
+
+        if (this.state.title.length > 0 && this.state.body.length > 0) {
+            this.props.postsCreatePost(this.state.title, this.state.body);
             this.setState({
-                postStatus: 'created'
+                postStatus: 'created',
             });
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.setState({
-            postStatus: 'new'
+            postStatus: 'new',
         });
     }
 
@@ -77,11 +71,11 @@ export class CreatePost extends Component {
 
 const mapStateToProps = state => ({
     auth: state.auth,
-    posts: state.posts
+    posts: state.posts,
 });
 
 const mapDispatchToProps = {
-    postsCreatePost
+    postsCreatePost,
 };
 
 export default connect(

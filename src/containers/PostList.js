@@ -26,6 +26,8 @@ export class PostList extends Component {
         fetchByAuthorId: PropTypes.bool,
         auth: PropTypes.object,
         posts: PropTypes.array,
+        postsFetchAll: PropTypes.func,
+        postsFetchNextPage: PropTypes.func,
     };
 
     static defaultProps = {
@@ -39,7 +41,7 @@ export class PostList extends Component {
     async paginate() {
         await this.props.postsFetchNextPage(this.state.nextPage);
         this.setState(currentState => ({
-            nextPage: currentState.nextPage + 1
+            nextPage: currentState.nextPage + 1,
         }));
     }
 
@@ -48,16 +50,17 @@ export class PostList extends Component {
 
         return (
             <div className="row">
-                {posts.length === 0 
-                    ? <PostsListPlaceholder />
-                    : <PostsListPresentation 
-                        posts={posts} 
+                {posts.length === 0 ? (
+                    <PostsListPlaceholder />
+                ) : (
+                    <PostsListPresentation
+                        posts={posts}
                         showMore={this.paginate}
                     />
-                }
-            <div className="col-lg-4">
-                <TwitterFrame />
-            </div>
+                )}
+                <div className="col-lg-4">
+                    <TwitterFrame />
+                </div>
             </div>
         );
     }

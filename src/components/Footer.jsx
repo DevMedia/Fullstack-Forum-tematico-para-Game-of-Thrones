@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Footer = () => {
+const Footer = props => {
     return (
         <div className="my-4 pt-4 text-muted text-center text-small">
             <p className="mb-1">

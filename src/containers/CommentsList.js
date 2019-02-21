@@ -8,6 +8,8 @@ import CommentsListPresentation from '../components/comments/CommentsList';
 export class CommentsList extends Component {
     static propTypes = {
         postId: PropTypes.string,
+        commentsFetchByPost: PropTypes.func,
+        commentsList: PropTypes.arrayOf(PropTypes.object)
     };
 
     componentDidMount() {
