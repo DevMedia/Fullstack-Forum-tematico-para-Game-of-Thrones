@@ -1,8 +1,14 @@
 import * as types from './types';
-import { provideFetchCommentsByPost, provideCreateCommentUrl } from '../../helpers/urlProviders';
+import {
+    provideFetchCommentsByPost,
+    provideCreateCommentUrl,
+} from '../../helpers/urlProviders';
 import { retrieveToken } from '../../helpers/tokenManager';
 import { authLogoff } from '../auth/actions';
-import { exceptionsFetchRejection, exceptionsHandleFetchErrors} from '../exceptions/actions';
+import {
+    exceptionsFetchRejection,
+    exceptionsHandleFetchErrors,
+} from '../exceptions/actions';
 
 export const commentsFetchByPost = postId => async dispatch => {
     try {
@@ -15,19 +21,23 @@ export const commentsFetchByPost = postId => async dispatch => {
 
         return dispatch({
             type: types.COMMENTS_FETCH_BY_POST,
-            payload: response.status === 200 ? await response.json() : [] 
+            payload: response.status === 200 ? await response.json() : [],
         });
     } catch (error) {
         return exceptionsHandleFetchErrors(error)(dispatch);
     }
 };
 
-export const commentsCreateComment = (postId, authorId, commentBody) => async dispatch => {
+export const commentsCreateComment = (
+    postId,
+    authorId,
+    commentBody
+) => async dispatch => {
     try {
         const url = provideCreateCommentUrl(postId);
         const token = retrieveToken();
         const requestBody = JSON.stringify({
-            body: commentBody
+            body: commentBody,
         });
 
         const response = await fetch(url, {
@@ -44,13 +54,11 @@ export const commentsCreateComment = (postId, authorId, commentBody) => async di
         }
 
         if (response.status !== 201) {
-            return exceptionsFetchRejection(response)(dispatch) ;
+            return exceptionsFetchRejection(response)(dispatch);
         }
 
         return commentsFetchByPost(postId)(dispatch);
-
     } catch (error) {
-        console.error(error)
         return exceptionsHandleFetchErrors(error)(dispatch);
     }
 };

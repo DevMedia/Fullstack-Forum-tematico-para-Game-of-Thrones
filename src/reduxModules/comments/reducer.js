@@ -6,10 +6,10 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
     switch (type) {
-        case types.COMMENTS_FETCH_BY_POST:
-            return { ...state, commentsList: payload };
+    case types.COMMENTS_FETCH_BY_POST:
+        return { ...state, commentsList: payload };
 
-        default:
-            return state;
+    default:
+        return state;
     }
 };

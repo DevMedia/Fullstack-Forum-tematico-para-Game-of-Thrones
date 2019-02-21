@@ -30,7 +30,7 @@ export const postsFetchAll = () => async dispatch => {
     }
 };
 
-export const postsFetchNextPage = (page) => async dispatch => {
+export const postsFetchNextPage = page => async dispatch => {
     try {
         const url = provideFetchAllPostsUrl(page);
         const response = await fetch(url);
@@ -46,7 +46,7 @@ export const postsFetchNextPage = (page) => async dispatch => {
     } catch (error) {
         return exceptionsHandleFetchErrors(error)(dispatch);
     }
-}
+};
 
 export const postsFetchByAuthor = authorId => async dispatch => {
     try {

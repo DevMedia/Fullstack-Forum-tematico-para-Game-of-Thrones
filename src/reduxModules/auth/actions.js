@@ -54,7 +54,7 @@ export const authLogin = (email, password) => async dispatch => {
     }
 };
 
-export const authLogoff = (push) => async dispatch => {
+export const authLogoff = () => async dispatch => {
     try {
         const token = retrieveToken();
         const url = provideLogoffUrl();
