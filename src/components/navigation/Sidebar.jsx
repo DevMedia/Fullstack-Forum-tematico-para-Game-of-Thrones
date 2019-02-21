@@ -36,7 +36,7 @@ export default function Sidebar(props) {
                         Novo Post
                     </Link>
                     <Link
-                        to=""
+                        to="/login"
                         className="nav-link"
                         onClick={() => {
                             props.closeMenu();

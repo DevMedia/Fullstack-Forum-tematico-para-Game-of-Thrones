@@ -13,7 +13,6 @@ export const exceptionsAuthLoginRejected = response => async dispatch => {
 
 export const exceptionsFetchRejection = response => async dispatch => {
     if (response.status === 401) {
-        localStorage.removeItem('')
         return dispatch({
             type: types.EXCEPTION_AUTH_LOGIN_UNAUTHORIZED
         });
