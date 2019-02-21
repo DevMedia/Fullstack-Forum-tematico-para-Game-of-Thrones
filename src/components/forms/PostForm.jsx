@@ -5,10 +5,9 @@ const PostForm = ({ title, body, handleChange, handleSubmit }) => {
     return (
         <div className="row justify-content-center">
             <div className="card col-lg-6 align-self-center">
-            <form className="pb-3 pt-3">
-                <fieldset>
-
-                <legend>Novo Post</legend>
+                <form className="pb-3 pt-3">
+                    <fieldset>
+                        <legend>Novo Post</legend>
                         <div className="form-group">
                             <input
                                 onChange={handleChange('title')}
@@ -34,8 +33,8 @@ const PostForm = ({ title, body, handleChange, handleSubmit }) => {
                             onClick={handleSubmit}>
                             Criar
                         </button>
-                </fieldset>
-            </form>
+                    </fieldset>
+                </form>
             </div>
         </div>
     );
@@ -45,7 +44,7 @@ PostForm.propTypes = {
     title: PropTypes.string,
     body: PropTypes.string,
     handleChange: PropTypes.func,
-    hadleSubmit: PropTypes.func,
+    handleSubmit: PropTypes.func,
 };
 
 export default PostForm;

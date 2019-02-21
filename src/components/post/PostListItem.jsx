@@ -21,10 +21,7 @@ const PostListItem = ({ post }) => {
                     </p>
                 </div>
                 <div className="col-lg-2 col-3 justify-content-right">
-                    <Avatar 
-                        author={post.author}
-                        postDate={postDate}
-                    />
+                    <Avatar author={post.author} postDate={postDate} />
                 </div>
             </div>
         </Link>

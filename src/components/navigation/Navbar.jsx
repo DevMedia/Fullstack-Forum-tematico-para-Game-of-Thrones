@@ -8,9 +8,7 @@ const Navbar = props => (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="row justify-content-between col-12">
             <div className="col-9 pl-0 navbar-brand">
-                <Link
-                    to="/"
-                    onClick={props.closeBurger}>
+                <Link to="/" onClick={props.closeBurger}>
                     <img src={logo} alt="Home" className="brand" />
                 </Link>
             </div>

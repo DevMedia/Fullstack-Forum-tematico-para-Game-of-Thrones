@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 const Post = ({ post }) => {
-
     const date = new Date(post.createdAt);
-    const postDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    const postDate = `${date.getDate()}/${date.getMonth() +
+        1}/${date.getFullYear()}`;
     return (
         <div>
             <div className="card">

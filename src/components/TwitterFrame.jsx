@@ -10,7 +10,6 @@ export default function TwitterFrame(props) {
                 screenName="GameOfThrones"
                 options={{
                     height: 2000,
-                    
                 }}
             />
         </div>

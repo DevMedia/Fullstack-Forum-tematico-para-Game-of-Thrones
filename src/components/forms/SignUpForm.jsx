@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
 
-const SignUpForm = (props) => (
+const SignUpForm = props => (
     <div className="row justify-content-center">
         {props.userIsLogged && <Redirect to="/" />}
         <div className="card col-12 col-lg-6 align-self-center">
@@ -45,10 +45,9 @@ const SignUpForm = (props) => (
                             placeholder="Mínimo de 4 caracteres."
                         />
                     </div>
-                    <button 
-                        className="btn btn-success" 
-                        onClick={props.submitSignUp}
-                    >
+                    <button
+                        className="btn btn-success"
+                        onClick={props.submitSignUp}>
                         Cadastrar
                     </button>
                 </fieldset>
@@ -66,7 +65,7 @@ SignUpForm.propTypes = {
     name: PropTypes.string,
     email: PropTypes.string,
     password: PropTypes.string,
-    userIsLogged: PropTypes.bool
+    userIsLogged: PropTypes.bool,
 };
 
 export default SignUpForm;

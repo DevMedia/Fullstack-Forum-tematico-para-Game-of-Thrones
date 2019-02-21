@@ -20,5 +20,5 @@ export default function Avatar(props) {
 
 Avatar.propTypes = {
     author: PropTypes.object,
-    postDate: PropTypes.string
+    postDate: PropTypes.string,
 };

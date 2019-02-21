@@ -20,8 +20,7 @@ function CommentForm({ handleChange, handleSubmit, body }) {
                         </div>
                         <button
                             className="btn btn-success"
-                            onClick={handleSubmit}
-                        >
+                            onClick={handleSubmit}>
                             Comentar
                         </button>
                     </div>

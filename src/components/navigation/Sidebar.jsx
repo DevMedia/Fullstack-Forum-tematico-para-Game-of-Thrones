@@ -7,7 +7,7 @@ export default function Sidebar(props) {
     return (
         <div id="mySidenav" className="sidenav" style={{ width }}>
             <div className="nav-link">
-            {props.userData.id && <h3>{props.userData.name}</h3>}
+                {props.userData.id && <h3>{props.userData.name}</h3>}
             </div>
             <Link to="" className="closebtn nav-link" onClick={props.closeMenu}>
                 &times;
