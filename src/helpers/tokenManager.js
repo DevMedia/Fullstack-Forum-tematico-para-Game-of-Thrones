@@ -1,7 +1,7 @@
 const key = 'NOME_CHAVE_TOKEN';
 
 export const retrieveToken = () => {
-    return localStorage.getItem(key)
+    return localStorage.getItem(key);
 };
 
 export const storeToken = token => {
@@ -10,4 +10,4 @@ export const storeToken = token => {
 
 export const removeToken = () => {
     localStorage.removeItem(key);
-}
+};
