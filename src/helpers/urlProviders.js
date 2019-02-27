@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3030/';
+const baseUrl = 'https://got-community-backend.herokuapp.com/';
 
 export const provideLoginUrl = () => {
     return baseUrl + 'api/auth/login';
