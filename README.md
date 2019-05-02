@@ -5,10 +5,11 @@ Este projeto apresenta um fórum definido por duas aplicações, back-end e fron
 Confira uma explicação completa desse código e o passo a passo para criar essa aplicação em https://www.devmedia.com.br/react-redux/
 
 ### Destaques do projeto
-1. React
-2. Redux
-3. Node.js
-4. Express.js
+
+* React
+* Redux
+* Node.js
+* Express.js
 
 ## Clonando o projeto a partir do GitHub
 
@@ -70,7 +71,7 @@ CLEARDB_DATABASE_URL:
 Levando em consideração a URL acima, para conectar essa aplicação com o banco de dados heroku_eb3ec026f66e354, devemos clicar na aba "Settings" da dashboard do Heroku. Nessa página clique no botão "Reveal Config Vars", isso irá revelar dois campos para por a chave e o valor da nova variável de ambiente. Em seguida ponha as seguintes variáveis com os valores: 
 
 | Chave         | Valor                                                                                                     |
-| _____________ | _________________________________________________________________________________________________________ |
+| ------------- | --------------------------------------------------------------------------------------------------------- |
 | NODE_ENV      | production                                                                                                |
 | DB_HOST       | mysql://bbd1ca985a75ae:b3270a98@us-cdbr-iron-east-03.cleardb.net/heroku_eb3ec026f66e354?reconnect=true    | 
 | DB_USER       | bbd1ca985a75ae                                                                                            |
@@ -84,18 +85,18 @@ heroku open
 
 ## Glossário
 
-### React
+#### React
 
 O React é uma biblioteca JavaScript de código aberto para criar interfaces de usuário. É mantido pelo Facebook, Instagram e uma comunidade de desenvolvedores individuais e outras empresas. 
 
-### Node.js
+#### Node.js
 
 o Node.js é um ambiente de execução para JavaScript, assíncrono e orientado a eventos de código aberto. O Node.js permite que os desenvolvedores usem JavaScript para escrever scripts do lado do servidor. 
 
-### Redux 
+#### Redux 
 
 Redux é uma biblioteca JavaScript de código aberto para gerenciar o estado do aplicativo. É mais comumente usado com bibliotecas como React ou Angular para construir interfaces com o usuário. Semelhante à arquitetura Flux do Facebook, foi criado por Dan Abramov e Andrew Clark. 
 
-### Express.js
+#### Express.js
 
 Express.js, ou simplesmente Express, é uma estrutura de aplicativo da web para o Node.js, lançada como software livre e de código aberto sob a licença MIT. Ele é projetado para construir aplicativos da Web e APIs. Ele foi chamado de estrutura de servidor padrão de fato para o Node.js. 
