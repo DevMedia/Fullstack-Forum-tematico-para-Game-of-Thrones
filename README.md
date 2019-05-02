@@ -16,13 +16,13 @@ Para clonar o repositório deste projeto a partir do GitHub você precisa ter o 
 Caso você esteja em um ambiente Windows, vá até a página https://git-scm.com/download/win, faça o download do instalador do GIT e prossiga com a instalação. 
 Após isso, abra o prompt de comandos para executar o seguinte:
 
-```bash
+```shellscript
 git clone https://github.com/BoscarinoAylan/got-community-backend.git
 ```
 
 Aguarde até que todos os arquivos sejam baixados para o seu computador e repita o mesmo processo para a aplicação React: 
 
-```bash
+```shellscript
 git clone https://github.com/BoscarinoAylan/got-community-frontend.git
 ```
 
@@ -35,13 +35,13 @@ https://id.heroku.com/login
 
 Acesse o prompt de comandos novamente e vá até o diretório no qual o projeto foi clonado do GitHub: 
 
-```bash
+```shellscript
 cd caixa-de-sugestoes
 ```
 
 No diretório do projeto digite os seguintes comandos:
 
-```bash
+```shellscript
 heroku login
 heroku create
 heroku git push heroku master
@@ -55,14 +55,14 @@ https://dashboard.heroku.com/account/billing
 
 No prompt de comandos execute os seguintes comandos:
 
-```bash
+```shellscript
 heroku addons:create cleardb:ignite
 heroku config
 ```
 
 O comando heroku config exibirá a URL de conexão com o banco de dados, a partir da qual adicionaremos as variáveis de ambiente necessárias para realizar a conexão com o banco de dados. 
 
-```bash
+```shellscript
 CLEARDB_DATABASE_URL: 
     mysql://bbd1ca985a75ae:b3270a98@us-cdbr-iron-east-03.cleardb.net/heroku_eb3ec026f66e354?reconnect=true
 ```
@@ -70,7 +70,7 @@ CLEARDB_DATABASE_URL:
 Levando em consideração a URL acima, para conectar essa aplicação com o banco de dados heroku_eb3ec026f66e354, devemos clicar na aba "Settings" da dashboard do Heroku. Nessa página clique no botão "Reveal Config Vars", isso irá revelar dois campos para por a chave e o valor da nova variável de ambiente. Em seguida ponha as seguintes variáveis com os valores: 
 
 | Chave         | Valor                                                                                                     |
-|_______________|___________________________________________________________________________________________________________|
+| _____________ | _________________________________________________________________________________________________________ |
 | NODE_ENV      | production                                                                                                |
 | DB_HOST       | mysql://bbd1ca985a75ae:b3270a98@us-cdbr-iron-east-03.cleardb.net/heroku_eb3ec026f66e354?reconnect=true    | 
 | DB_USER       | bbd1ca985a75ae                                                                                            |
@@ -78,7 +78,7 @@ Levando em consideração a URL acima, para conectar essa aplicação com o banc
 
 Uma vez que cada um desses passos tenha sido executado com sucesso, podemos executar a aplicação com o seguinte comando: 
 
-```bash
+```shellscript
 heroku open
 ```
 
