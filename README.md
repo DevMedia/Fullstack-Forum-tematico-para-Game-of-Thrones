@@ -1,68 +1,87 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Aplicação Fullstack em Node.js e React: Fórum temático para Game of Thrones 
 
-## Available Scripts
+Este projeto apresenta um fórum definido por duas aplicações, back-end e front-end, que implementam autenticação via método JWT. No back-end foi usado Node.js com Express.js e um banco de dados MySQL. O front-end é feito em React com Redux.
 
-In the project directory, you can run:
+Confira uma explicação completa desse código e o passo a passo para criar essa aplicação em https://www.devmedia.com.br/react-redux/
 
-### `npm start`
+### Destaques do projeto
+1. React
+2. Redux
+3. Node.js
+4. Express.js
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Clonando o projeto a partir do GitHub
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Para clonar o repositório deste projeto a partir do GitHub você precisa ter o GIT instalado em seu computador. 
+Caso você esteja em um ambiente Windows, vá até a página https://git-scm.com/download/win, faça o download do instalador do GIT e prossiga com a instalação. 
+Após isso, abra o prompt de comandos para executar o seguinte:
 
-### `npm test`
+git clone https://github.com/BoscarinoAylan/got-community-backend.git
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Aguarde até que todos os arquivos sejam baixados para o seu computador e repita o mesmo processo para a aplicação React: 
 
-### `npm run build`
+git clone https://github.com/BoscarinoAylan/got-community-frontend.git
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Fazendo o deploy da aplicação no Heroku
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Para enviar o seu projeto para o Heroku e publicar a sua aplicação você deve ter uma conta criada, além de instalar em seu computador o Heroku CLI. Nas URLs abaixo você conseguirá realizar ambos esses passos:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+https://devcenter.heroku.com/articles/heroku-cli 
+https://id.heroku.com/login 
 
-### `npm run eject`
+Acesse o prompt de comandos novamente e vá até o diretório no qual o projeto foi clonado do GitHub: 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+cd caixa-de-sugestoes
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+No diretório do projeto digite os seguintes comandos:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+heroku login
+heroku create
+heroku git push heroku master
+heroku create
+heroku logs --tail
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Agora, no projeto back-end, precisamos configurar o banco de dados da aplicação no arquivo config.js, bem como adicionar suporte a um banco de dados no projeto que criamos com o Heroku CLI nos passos acima. Aqui utilizaremos o ClearDB, um addon que possui uma versão gratuita, para instalar o MySQL. Antes de instalar o ClearDB certifique-se de habilitar a cobrança no Heroku, pois essa é uma exigência para a instalação deste addon. 
 
-## Learn More
+https://dashboard.heroku.com/account/billing 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+No prompt de comandos execute os seguintes comandos:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+heroku addons:create cleardb:ignite
+heroku config
 
-### Code Splitting
+O comando heroku config exibirá a URL de conexão com o banco de dados, a partir da qual adicionaremos as variáveis de ambiente necessárias para realizar a conexão com o banco de dados. 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+CLEARDB_DATABASE_URL: 
+    mysql://bbd1ca985a75ae:b3270a98@us-cdbr-iron-east-03.cleardb.net/heroku_eb3ec026f66e354?reconnect=true
 
-### Analyzing the Bundle Size
+Levando em consideração a URL acima, para conectar essa aplicação com o banco de dados heroku_eb3ec026f66e354, devemos clicar na aba "Settings" da dashboard do Heroku. Nessa página clique no botão "Reveal Config Vars", isso irá revelar dois campos para por a chave e o valor da nova variável de ambiente. Em seguida ponha as seguintes variáveis com os valores: 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+| Chave         | Valor                                                                                                     |
+_____________________________________________________________________________________________________________________________
+| NODE_ENV      | production                                                                                                |
+| DB_HOST       | mysql://bbd1ca985a75ae:b3270a98@us-cdbr-iron-east-03.cleardb.net/heroku_eb3ec026f66e354?reconnect=true    | 
+| DB_USER       | bbd1ca985a75ae                                                                                            |
+| DB_PASSWORD   | b3270a98                                                                                                  |
 
-### Making a Progressive Web App
+Uma vez que cada um desses passos tenha sido executado com sucesso, podemos executar a aplicação com o seguinte comando: 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+heroku open
 
-### Advanced Configuration
+## Glossário
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+### React
 
-### Deployment
+O React é uma biblioteca JavaScript de código aberto para criar interfaces de usuário. É mantido pelo Facebook, Instagram e uma comunidade de desenvolvedores individuais e outras empresas. 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+### Node.js
 
-### `npm run build` fails to minify
+o Node.js é um ambiente de execução para JavaScript, assíncrono e orientado a eventos de código aberto. O Node.js permite que os desenvolvedores usem JavaScript para escrever scripts do lado do servidor. 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Redux 
+
+Redux é uma biblioteca JavaScript de código aberto para gerenciar o estado do aplicativo. É mais comumente usado com bibliotecas como React ou Angular para construir interfaces com o usuário. Semelhante à arquitetura Flux do Facebook, foi criado por Dan Abramov e Andrew Clark. 
+
+### Express.js
+
+Express.js, ou simplesmente Express, é uma estrutura de aplicativo da web para o Node.js, lançada como software livre e de código aberto sob a licença MIT. Ele é projetado para construir aplicativos da Web e APIs. Ele foi chamado de estrutura de servidor padrão de fato para o Node.js. 
